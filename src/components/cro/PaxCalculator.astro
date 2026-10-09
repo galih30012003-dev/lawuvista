@@ -1,21 +1,22 @@
 ---
-interface Props {
-  pricePerPax?: number;
-  standalonePricePerPax?: number;
-  bundleName?: string;
-  defaultPax?: number;
-  minPax?: number;
-  maxPax?: number;
-}
+import packagesData from '@/data/packages.json';
 
-const {
-  pricePerPax = 195000,
-  standalonePricePerPax = 260000,
-  bundleName = 'Super Combo (Jeep + Tubing + Makan)',
-  defaultPax = 8,
-  minPax = 4,
-  maxPax = 50
-} = Astro.props;
+// Filter paket per-orang saja (skip jeep & villa)
+const perPersonPackages = [
+  ...packagesData.bundles.map(p => ({ ...p, categoryLabel: 'Bundling' })),
+  ...packagesData.tubing.map(p => ({ ...p, categoryLabel: 'River Tubing' })),
+  ...packagesData.outbound.map(p => ({ ...p, categoryLabel: 'Outbound' }))
+];
+
+// Group by category untuk dropdown optgroup
+const groupedPackages = {
+  'Bundling': perPersonPackages.filter(p => p.category === 'bundle'),
+  'River Tubing': perPersonPackages.filter(p => p.category === 'tubing'),
+  'Outbound': perPersonPackages.filter(p => p.category === 'outbound')
+};
+
+// Default ke Super Combo
+const defaultPackage = packagesData.bundles[0];
 ---
 
 <div class="bg-gradient-to-br from-primary-50 via-white to-primary-50/40 border-2 border-primary/20 rounded-3xl p-5 sm:p-8 shadow-xl max-w-2xl mx-auto my-8 sm:my-10">
@@ -25,17 +26,46 @@ const {
     </span>
     <h3 class="text-xl sm:text-2xl font-black text-gray-900 leading-snug">Hitung Estimasi Biaya Rombongan</h3>
     <p class="text-xs sm:text-sm text-gray-600 mt-1">
-      Geser jumlah orang untuk melihat total biaya &amp; jumlah armada Jeep yang disiapkan:
+      Pilih paket dan jumlah peserta untuk melihat estimasi biaya total:
     </p>
   </div>
 
   <div class="space-y-5 sm:space-y-6">
+    <!-- Package Selector Dropdown -->
+    <div class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-100 shadow-sm">
+      <label for="package-selector" class="text-xs sm:text-sm font-bold text-gray-700 block mb-3">
+        Pilih Paket Wisata:
+      </label>
+      <select
+        id="package-selector"
+        class="w-full px-4 py-3 text-sm sm:text-base font-semibold text-gray-800 bg-white border-2 border-gray-200 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all cursor-pointer"
+      >
+        {Object.entries(groupedPackages).map(([category, packages]) => (
+          <optgroup label={`━━ ${category} ━━`}>
+            {packages.map((pkg) => (
+              <option value={pkg.id} data-package={JSON.stringify({
+                id: pkg.id,
+                name: pkg.name,
+                priceAmount: pkg.priceAmount,
+                originalPrice: pkg.originalPrice || pkg.priceAmount,
+                minPax: pkg.minPax || 1,
+                category: pkg.category,
+                waTemplate: pkg.waTemplate
+              })}>
+                {pkg.name} - Rp{new Intl.NumberFormat('id-ID').format(pkg.priceAmount)}/orang
+              </option>
+            ))}
+          </optgroup>
+        ))}
+      </select>
+    </div>
+
     <!-- Slider Row -->
     <div class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-100 shadow-sm">
       <div class="flex justify-between items-center mb-3">
         <span class="text-xs sm:text-sm font-bold text-gray-700">Jumlah Peserta:</span>
         <span id="pax-count-display" class="text-xl sm:text-3xl font-black text-primary">
-          {defaultPax} Orang
+          8 Orang
         </span>
       </div>
 
@@ -43,17 +73,17 @@ const {
         <input
           type="range"
           id="pax-slider"
-          min={minPax}
-          max={maxPax}
-          value={defaultPax}
+          min="1"
+          max="50"
+          value="8"
           step="1"
           class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
           aria-label="Pilih jumlah peserta"
         />
       </div>
       <div class="flex justify-between text-[10px] sm:text-[11px] text-gray-400 mt-1 font-semibold">
-        <span>Min. {minPax} Orang</span>
-        <span>{maxPax} Orang+</span>
+        <span id="min-pax-label">Min. 1 Orang</span>
+        <span>50 Orang+</span>
       </div>
     </div>
 
@@ -100,37 +130,81 @@ const {
   </div>
 </div>
 
-<script define:vars={{ pricePerPax, standalonePricePerPax, bundleName }}>
+<script>
   function initCalculator() {
-    const slider = document.getElementById('pax-slider');
+    const packageSelector = document.getElementById('package-selector') as HTMLSelectElement;
+    const slider = document.getElementById('pax-slider') as HTMLInputElement;
     const paxDisplay = document.getElementById('pax-count-display');
     const jeepDisplay = document.getElementById('jeep-needed-display');
     const savingsDisplay = document.getElementById('savings-display');
     const totalDisplay = document.getElementById('total-price-display');
-    const waBtn = document.getElementById('calc-wa-btn');
+    const minPaxLabel = document.getElementById('min-pax-label');
+    const waBtn = document.getElementById('calc-wa-btn') as HTMLAnchorElement;
 
-    if (!slider || !paxDisplay || !jeepDisplay || !savingsDisplay || !totalDisplay || !waBtn) return;
+    if (!packageSelector || !slider || !paxDisplay || !jeepDisplay || !savingsDisplay || !totalDisplay || !waBtn || !minPaxLabel) return;
+
+    let currentPackage = {
+      id: 'bundle-super-combo',
+      name: 'Super Combo: Jeep + Tubing + Makan',
+      priceAmount: 195000,
+      originalPrice: 260000,
+      minPax: 4,
+      category: 'bundle',
+      waTemplate: 'Halo Lawu Vista, saya tertarik ambil Paket Bundling Super Combo (Jeep + Tubing + Makan) Rp195rb/orang. Bisa cek ketersediaan slot?'
+    };
+
+    function updatePackage() {
+      const selectedOption = packageSelector.options[packageSelector.selectedIndex];
+      const packageData = selectedOption.getAttribute('data-package');
+
+      if (packageData) {
+        currentPackage = JSON.parse(packageData);
+
+        // Update slider min based on package minPax
+        slider.min = currentPackage.minPax.toString();
+        minPaxLabel.textContent = `Min. ${currentPackage.minPax} Orang`;
+
+        // Reset slider value to minPax if current value is below minPax
+        if (parseInt(slider.value) < currentPackage.minPax) {
+          slider.value = currentPackage.minPax.toString();
+        }
+
+        render();
+      }
+    }
 
     function render() {
       const pax = parseInt(slider.value, 10);
       const jeeps = Math.ceil(pax / 4);
-      const totalPrice = pax * pricePerPax;
-      const totalSavings = pax * (standalonePricePerPax - pricePerPax);
+      const totalPrice = pax * currentPackage.priceAmount;
+      const totalSavings = pax * (currentPackage.originalPrice - currentPackage.priceAmount);
 
-      paxDisplay.innerText = `${pax} Orang`;
-      jeepDisplay.innerText = `${jeeps} Unit`;
-      savingsDisplay.innerText = `Rp${new Intl.NumberFormat('id-ID').format(totalSavings)}`;
-      totalDisplay.innerText = `Rp${new Intl.NumberFormat('id-ID').format(totalPrice)}`;
+      paxDisplay.textContent = `${pax} Orang`;
+      jeepDisplay.textContent = `${jeeps} Unit`;
+      savingsDisplay.textContent = `Rp${new Intl.NumberFormat('id-ID').format(totalSavings)}`;
+      totalDisplay.textContent = `Rp${new Intl.NumberFormat('id-ID').format(totalPrice)}`;
 
-      // Ambil Ref ID dari session
+      // Generate WhatsApp message
       const refId = sessionStorage.getItem('lv_ref_id') || ('LV-' + Math.floor(1000 + Math.random() * 9000));
-      const message = `Halo Lawu Vista, kami rombongan ${pax} orang ingin booking Paket ${bundleName}.\nEstimasi: Rp${new Intl.NumberFormat('id-ID').format(totalPrice)} (${jeeps} Jeep).\nBisa cek ketersediaan tanggal kami?\n\n[Ref: ${refId}]`;
+
+      let message: string;
+      if (currentPackage.waTemplate) {
+        // Use custom template if available, add pax and total info
+        message = currentPackage.waTemplate.replace(/\?$/, '') +
+          `\n\nJumlah peserta: ${pax} orang\nEstimasi total: Rp${new Intl.NumberFormat('id-ID').format(totalPrice)}\n\n[Ref: ${refId}]`;
+      } else {
+        // Generic template
+        message = `Halo Lawu Vista, kami rombongan ${pax} orang ingin booking ${currentPackage.name}.\nEstimasi: Rp${new Intl.NumberFormat('id-ID').format(totalPrice)}.\nBisa cek ketersediaan tanggal kami?\n\n[Ref: ${refId}]`;
+      }
 
       waBtn.setAttribute('href', `https://wa.me/6281228237512?text=${encodeURIComponent(message)}`);
     }
 
+    packageSelector.addEventListener('change', updatePackage);
     slider.addEventListener('input', render);
-    render();
+
+    // Initial render
+    updatePackage();
   }
 
   document.addEventListener('DOMContentLoaded', initCalculator);
