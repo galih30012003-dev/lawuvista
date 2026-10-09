@@ -1,0 +1,1 @@
+- [Arsitektur Astro + Tailwind & Tracking Google Sheets](astro-tailwind-architecture.md) — Arsitektur Lawu Vista Pure Static SSG dan Google Sheets GCLID tracker.

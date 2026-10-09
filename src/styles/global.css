@@ -1,0 +1,105 @@
+@import './legacy-main.css';
+@import './legacy-service.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════
+   PREMIUM & HARMONIOUS GALLERY GRID (100% RAPI & SIMETRIS)
+   ═══════════════════════════════════════════════════════════════ */
+.gallery-section {
+  padding: 5rem 0 !important;
+  background: var(--gray-900) !important;
+}
+.gallery-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0.875rem !important;
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+}
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+}
+.gallery-item {
+  position: relative !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  aspect-ratio: 4 / 3 !important;
+  background: #111827 !important;
+  grid-column: span 1 !important;
+  grid-row: span 1 !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25) !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease !important;
+}
+.gallery-item:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px rgba(217,70,239,.3) !important;
+  border-color: rgba(217,70,239,.4) !important;
+}
+.gallery-item img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform .5s cubic-bezier(.4,0,.2,1) !important;
+}
+.gallery-item:hover img {
+  transform: scale(1.08) !important;
+}
+.gallery-item-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to top, rgba(10,0,16,.85) 0%, rgba(10,0,16,.3) 50%, transparent 100%) !important;
+  opacity: 0 !important;
+  transition: opacity .3s ease !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  padding: 1rem !important;
+  z-index: 2 !important;
+}
+.gallery-item:hover .gallery-item-overlay {
+  opacity: 1 !important;
+}
+.gallery-item-caption {
+  color: #fff !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,.6) !important;
+  letter-spacing: .02em !important;
+}
+.gallery-zoom-icon {
+  width: 36px !important;
+  height: 36px !important;
+  background: rgba(255,255,255,.95) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--primary) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.4) !important;
+  transition: transform .25s ease !important;
+  flex-shrink: 0 !important;
+}
+.gallery-item:hover .gallery-zoom-icon {
+  transform: scale(1.1) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PREVENT REVEAL OPACITY 0 GLITCH ON HERO & MOBILE
+   ═══════════════════════════════════════════════════════════════ */
+.hero-section {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.hero {
+  opacity: 1 !important;
+  transform: none !important;
+}

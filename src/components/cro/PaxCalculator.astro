@@ -1,0 +1,137 @@
+---
+interface Props {
+  pricePerPax?: number;
+  standalonePricePerPax?: number;
+  bundleName?: string;
+  defaultPax?: number;
+  minPax?: number;
+  maxPax?: number;
+}
+
+const {
+  pricePerPax = 195000,
+  standalonePricePerPax = 260000,
+  bundleName = 'Super Combo (Jeep + Tubing + Makan)',
+  defaultPax = 8,
+  minPax = 4,
+  maxPax = 50
+} = Astro.props;
+---
+
+<div class="bg-gradient-to-br from-primary-50 via-white to-primary-50/40 border-2 border-primary/20 rounded-3xl p-5 sm:p-8 shadow-xl max-w-2xl mx-auto my-8 sm:my-10">
+  <div class="text-center mb-5 sm:mb-6">
+    <span class="inline-block bg-primary/10 text-primary text-[10px] sm:text-xs font-extrabold uppercase tracking-widest px-3 py-1 rounded-full mb-2">
+      Simulasi Instan
+    </span>
+    <h3 class="text-xl sm:text-2xl font-black text-gray-900 leading-snug">Hitung Estimasi Biaya Rombongan</h3>
+    <p class="text-xs sm:text-sm text-gray-600 mt-1">
+      Geser jumlah orang untuk melihat total biaya &amp; jumlah armada Jeep yang disiapkan:
+    </p>
+  </div>
+
+  <div class="space-y-5 sm:space-y-6">
+    <!-- Slider Row -->
+    <div class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-100 shadow-sm">
+      <div class="flex justify-between items-center mb-3">
+        <span class="text-xs sm:text-sm font-bold text-gray-700">Jumlah Peserta:</span>
+        <span id="pax-count-display" class="text-xl sm:text-3xl font-black text-primary">
+          {defaultPax} Orang
+        </span>
+      </div>
+
+      <div class="py-2">
+        <input
+          type="range"
+          id="pax-slider"
+          min={minPax}
+          max={maxPax}
+          value={defaultPax}
+          step="1"
+          class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
+          aria-label="Pilih jumlah peserta"
+        />
+      </div>
+      <div class="flex justify-between text-[10px] sm:text-[11px] text-gray-400 mt-1 font-semibold">
+        <span>Min. {minPax} Orang</span>
+        <span>{maxPax} Orang+</span>
+      </div>
+    </div>
+
+    <!-- Output Metrics Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
+      <div class="bg-white p-3 sm:p-3.5 rounded-2xl border border-gray-100 shadow-sm text-center">
+        <span class="text-[10px] sm:text-[11px] font-semibold text-gray-400 uppercase tracking-wider block">Armada Jeep</span>
+        <span id="jeep-needed-display" class="text-base sm:text-xl font-extrabold text-gray-900 block mt-0.5">2 Unit</span>
+        <span class="text-[10px] text-gray-500">Kapasitas 4-5 pax/mobil</span>
+      </div>
+
+      <div class="bg-white p-3 sm:p-3.5 rounded-2xl border border-gray-100 shadow-sm text-center">
+        <span class="text-[10px] sm:text-[11px] font-semibold text-gray-400 uppercase tracking-wider block">Hemat Rombongan</span>
+        <span id="savings-display" class="text-base sm:text-xl font-extrabold text-wa block mt-0.5">Rp520.000</span>
+        <span class="text-[10px] text-wa-dark font-medium">Dibanding beli satuan</span>
+      </div>
+
+      <div class="bg-white p-3 sm:p-3.5 rounded-2xl border border-primary/30 shadow-sm text-center bg-primary/5">
+        <span class="text-[10px] sm:text-[11px] font-semibold text-primary uppercase tracking-wider block">Total Investasi</span>
+        <span id="total-price-display" class="text-base sm:text-xl font-black text-primary block mt-0.5">Rp1.560.000</span>
+        <span class="text-[10px] text-gray-500">All-in siap berangkat</span>
+      </div>
+    </div>
+
+    <!-- Dynamic CTA -->
+    <div>
+      <a
+        id="calc-wa-btn"
+        href="https://wa.me/6281228237512"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full flex items-center justify-center gap-2 bg-wa hover:bg-wa-dark text-white font-extrabold py-3.5 sm:py-4 px-5 sm:px-6 rounded-2xl shadow-xl shadow-wa/25 transition-transform duration-200 hover:-translate-y-0.5 text-xs sm:text-base cursor-pointer"
+      >
+        <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current shrink-0" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.528 5.843L0 24l6.335-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.357-.214-3.762.895.954-3.667-.234-.375A9.776 9.776 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182S21.818 6.574 21.818 12 21.818z"/>
+        </svg>
+        <span id="calc-cta-text">Kunci Slot Rombongan via WhatsApp</span>
+      </a>
+      <p class="text-center text-[10px] sm:text-[11px] text-gray-500 mt-2">
+        ⚡ Konsultasi gratis • Jadwal bisa dicustom • DP fleksibel
+      </p>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ pricePerPax, standalonePricePerPax, bundleName }}>
+  function initCalculator() {
+    const slider = document.getElementById('pax-slider');
+    const paxDisplay = document.getElementById('pax-count-display');
+    const jeepDisplay = document.getElementById('jeep-needed-display');
+    const savingsDisplay = document.getElementById('savings-display');
+    const totalDisplay = document.getElementById('total-price-display');
+    const waBtn = document.getElementById('calc-wa-btn');
+
+    if (!slider || !paxDisplay || !jeepDisplay || !savingsDisplay || !totalDisplay || !waBtn) return;
+
+    function render() {
+      const pax = parseInt(slider.value, 10);
+      const jeeps = Math.ceil(pax / 4);
+      const totalPrice = pax * pricePerPax;
+      const totalSavings = pax * (standalonePricePerPax - pricePerPax);
+
+      paxDisplay.innerText = `${pax} Orang`;
+      jeepDisplay.innerText = `${jeeps} Unit`;
+      savingsDisplay.innerText = `Rp${new Intl.NumberFormat('id-ID').format(totalSavings)}`;
+      totalDisplay.innerText = `Rp${new Intl.NumberFormat('id-ID').format(totalPrice)}`;
+
+      // Ambil Ref ID dari session
+      const refId = sessionStorage.getItem('lv_ref_id') || ('LV-' + Math.floor(1000 + Math.random() * 9000));
+      const message = `Halo Lawu Vista, kami rombongan ${pax} orang ingin booking Paket ${bundleName}.\nEstimasi: Rp${new Intl.NumberFormat('id-ID').format(totalPrice)} (${jeeps} Jeep).\nBisa cek ketersediaan tanggal kami?\n\n[Ref: ${refId}]`;
+
+      waBtn.setAttribute('href', `https://wa.me/6281228237512?text=${encodeURIComponent(message)}`);
+    }
+
+    slider.addEventListener('input', render);
+    render();
+  }
+
+  document.addEventListener('DOMContentLoaded', initCalculator);
+</script>

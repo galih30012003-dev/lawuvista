@@ -1,0 +1,278 @@
+---
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogImage = '/assets/images/og-default.jpg'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Preload Font Poppins Utama -->
+  <link rel="preload" href="/assets/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/assets/images/icons/favicon.ico" />
+  <link rel="icon" type="image/webp" href="/assets/images/icons/favicon-32.webp" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/images/icons/favicon-180.webp" />
+  <meta name="theme-color" content="#d946ef" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="id_ID" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Google Consent Mode v2 Default (Sebelum persetujuan user) -->
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+  </script>
+</head>
+<body class="selection:bg-primary-light selection:text-primary-dark">
+  <!-- SVG Symbols for Icons -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="icon-wa" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.528 5.843L0 24l6.335-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.357-.214-3.762.895.954-3.667-.234-.375A9.776 9.776 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182S21.818 6.574 21.818 12 17.426 21.818 12 21.818z"/>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+      <polyline points="20 6 9 17 4 12"/>
+    </symbol>
+  </svg>
+
+  <slot />
+
+  <!-- Floating Pulsing WhatsApp Button -->
+  <div class="wa-float-container" aria-label="WhatsApp Floating Button">
+    <a
+      href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20tanya%20paket%20wisata%20Kemuning."
+      class="wa-float-btn lv-wa-cta"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-package-id="floating-global"
+      data-default-msg="Halo Lawu Vista, saya ingin tanya paket wisata Kemuning."
+    >
+      <svg class="wa-icon-svg" width="22" height="22" aria-hidden="true"><use href="#icon-wa"/></svg>
+      <span class="wa-float-label">Chat WhatsApp</span>
+    </a>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" aria-label="Kembali ke atas">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <!-- Gallery Lightbox Modal -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau Gambar">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Tutup pratinjau">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Gambar sebelumnya">&#10094;</button>
+    <img id="lightbox-img" src="" alt="Pratinjau Foto Wisata Lawu Vista" />
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Gambar berikutnya">&#10095;</button>
+  </div>
+
+  <!-- Client-side Interactive Scripts -->
+  <script>
+    import { extractUrlTracking, getOrGenerateRefId, formatWhatsAppUrl, sendLeadSignal } from '@/utils/tracker';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Navigation Scroll effect
+      const nav = document.querySelector('.site-nav');
+      if (nav) {
+        const onScroll = () => {
+          if (window.scrollY > 60) {
+            nav.classList.add('nav-scrolled');
+            nav.classList.remove('nav-transparent');
+          } else {
+            nav.classList.remove('nav-scrolled');
+            if (nav.classList.contains('nav-transparent-init')) {
+              nav.classList.add('nav-transparent');
+            }
+          }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      // 2. Mobile Menu Toggle
+      const toggle = document.querySelector('.nav-mobile-toggle');
+      const mobileMenu = document.querySelector('.nav-mobile-menu');
+      if (toggle && mobileMenu) {
+        toggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('open');
+          const expanded = mobileMenu.classList.contains('open');
+          toggle.setAttribute('aria-expanded', String(expanded));
+        });
+        document.addEventListener('click', (e) => {
+          if (!toggle.contains(e.target as Node) && !mobileMenu.contains(e.target as Node)) {
+            mobileMenu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // 3. FAQ Accordion Toggle
+      document.querySelectorAll('.faq-question').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.faq-item');
+          if (!item) return;
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach((el) => {
+            el.classList.remove('open');
+            el.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+            el.querySelector('.faq-answer')?.setAttribute('aria-hidden', 'true');
+          });
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            item.querySelector('.faq-answer')?.setAttribute('aria-hidden', 'false');
+          }
+        });
+      });
+
+      // 4. Gallery Lightbox
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img') as HTMLImageElement;
+      const lbClose = document.getElementById('lightbox-close');
+      const lbPrev = document.getElementById('lightbox-prev');
+      const lbNext = document.getElementById('lightbox-next');
+      const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+      let currentIndex = 0;
+
+      function openLightbox(idx: number) {
+        if (!lightbox || !lbImg || !galleryItems.length) return;
+        currentIndex = idx;
+        const targetImg = galleryItems[idx].querySelector('img');
+        lbImg.src = targetImg?.src || '';
+        lbImg.alt = targetImg?.alt || '';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        if (lbImg) lbImg.src = '';
+      }
+
+      function showLightboxItem(idx: number) {
+        if (!galleryItems.length || !lbImg) return;
+        currentIndex = (idx + galleryItems.length) % galleryItems.length;
+        const targetImg = galleryItems[currentIndex].querySelector('img');
+        lbImg.src = targetImg?.src || '';
+        lbImg.alt = targetImg?.alt || '';
+      }
+
+      galleryItems.forEach((item, i) => {
+        item.addEventListener('click', () => openLightbox(i));
+      });
+      lbClose?.addEventListener('click', closeLightbox);
+      lbPrev?.addEventListener('click', () => showLightboxItem(currentIndex - 1));
+      lbNext?.addEventListener('click', () => showLightboxItem(currentIndex + 1));
+      lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox?.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showLightboxItem(currentIndex - 1);
+        if (e.key === 'ArrowRight') showLightboxItem(currentIndex + 1);
+      });
+
+      // 5. Reveal Animations
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.05 });
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+      } else {
+        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+      }
+
+      // 6. Back to Top Button
+      const backTop = document.querySelector('.back-to-top');
+      if (backTop) {
+        window.addEventListener('scroll', () => {
+          backTop.classList.toggle('visible', window.scrollY > 400);
+        }, { passive: true });
+        backTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // 7. Smart GCLID & Ref ID Tracker for all WA CTAs
+      const ctas = document.querySelectorAll<HTMLAnchorElement>('.lv-wa-cta, a[href*="wa.me"], a[href*="whatsapp.com"]');
+      const tracking = extractUrlTracking();
+      const refId = getOrGenerateRefId();
+
+      ctas.forEach(cta => {
+        const href = cta.getAttribute('href') || '';
+        let baseMsg = 'Halo Lawu Vista';
+        try {
+          const urlObj = new URL(href);
+          const rawMsg = urlObj.searchParams.get('text');
+          if (rawMsg) baseMsg = decodeURIComponent(rawMsg);
+        } catch(e) {}
+
+        const cleanBaseMsg = baseMsg.replace(/\n\n\[Ref: [^\]]+\]/g, '').trim();
+        const finalUrl = formatWhatsAppUrl(cleanBaseMsg, refId);
+        cta.setAttribute('href', finalUrl);
+
+        cta.addEventListener('click', () => {
+          sendLeadSignal({
+            ref_id: refId,
+            gclid: tracking.gclid,
+            package_id: cta.getAttribute('data-package-id') || 'general',
+            utm_source: tracking.utm_source,
+            utm_medium: tracking.utm_medium,
+            utm_campaign: tracking.utm_campaign,
+            utm_term: tracking.utm_term,
+            utm_content: tracking.utm_content,
+            landing_page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

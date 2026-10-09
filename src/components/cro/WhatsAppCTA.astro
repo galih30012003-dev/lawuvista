@@ -1,0 +1,90 @@
+---
+interface Props {
+  text?: string;
+  subtext?: string;
+  packageId?: string;
+  defaultMessage?: string;
+  variant?: 'primary' | 'secondary' | 'nav' | 'floating' | 'outline';
+  className?: string;
+}
+
+const {
+  text = 'Chat WhatsApp Sekarang',
+  subtext = 'Respon Cepat < 5 Menit',
+  packageId = 'general',
+  defaultMessage = 'Halo Lawu Vista, saya ingin tanya info paket wisata Kemuning.',
+  variant = 'primary',
+  className = ''
+} = Astro.props;
+
+const baseStyles = 'inline-flex items-center justify-center font-bold transition-all duration-200 cursor-pointer text-center';
+const variantStyles = {
+  primary: 'bg-wa hover:bg-wa-dark text-white px-6 py-3.5 rounded-xl shadow-lg shadow-wa/30 hover:-translate-y-0.5 text-base w-full sm:w-auto',
+  secondary: 'bg-white hover:bg-gray-50 text-wa border-2 border-wa px-5 py-3 rounded-xl text-sm w-full sm:w-auto',
+  outline: 'bg-transparent hover:bg-white/10 text-white border-2 border-white/60 hover:border-white px-6 py-3 rounded-xl text-sm',
+  nav: 'bg-wa hover:bg-wa-dark text-white px-4 py-2 rounded-lg text-sm shadow-md',
+  floating: 'fixed bottom-5 right-5 z-50 bg-wa hover:bg-wa-dark text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-2 animate-bounce hover:animate-none'
+};
+---
+
+<a
+  href={`https://wa.me/6281228237512?text=${encodeURIComponent(defaultMessage)}`}
+  class={`lv-wa-cta ${baseStyles} ${variantStyles[variant]} ${className}`}
+  data-package-id={packageId}
+  data-default-msg={defaultMessage}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <svg class="w-5 h-5 mr-2 shrink-0 fill-current" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.528 5.843L0 24l6.335-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.357-.214-3.762.895.954-3.667-.234-.375A9.776 9.776 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182S21.818 6.574 21.818 12 17.426 21.818 12 21.818z"/>
+  </svg>
+  <div class="flex flex-col text-left">
+    <span>{text}</span>
+    {subtext && <span class="text-[11px] font-normal opacity-90 leading-tight">{subtext}</span>}
+  </div>
+</a>
+
+<script>
+  import { extractUrlTracking, getOrGenerateRefId, formatWhatsAppUrl, sendLeadSignal } from '@/utils/tracker';
+
+  function initSmartCTAs() {
+    const ctas = document.querySelectorAll<HTMLAnchorElement>('.lv-wa-cta');
+    if (!ctas.length) return;
+
+    const tracking = extractUrlTracking();
+    const refId = getOrGenerateRefId();
+
+    ctas.forEach(cta => {
+      if (cta.getAttribute('data-tracker-bound') === 'true') return;
+      cta.setAttribute('data-tracker-bound', 'true');
+
+      const defaultMsg = cta.getAttribute('data-default-msg') || 'Halo Lawu Vista';
+      const packageId = cta.getAttribute('data-package-id') || 'general';
+      const waUrl = formatWhatsAppUrl(defaultMsg, refId);
+
+      cta.setAttribute('href', waUrl);
+
+      cta.addEventListener('click', () => {
+        sendLeadSignal({
+          ref_id: refId,
+          gclid: tracking.gclid,
+          package_id: packageId,
+          utm_source: tracking.utm_source,
+          utm_medium: tracking.utm_medium,
+          utm_campaign: tracking.utm_campaign,
+          utm_term: tracking.utm_term,
+          utm_content: tracking.utm_content,
+          landing_page: window.location.pathname,
+          timestamp: new Date().toISOString()
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSmartCTAs);
+  } else {
+    initSmartCTAs();
+  }
+</script>

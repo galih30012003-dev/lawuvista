@@ -1,0 +1,531 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/layout/Navbar.astro';
+import Footer from '@/components/layout/Footer.astro';
+import TrustMarquee from '@/components/cro/TrustMarquee.astro';
+import BundleCard from '@/components/cro/BundleCard.astro';
+import PaxCalculator from '@/components/cro/PaxCalculator.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import packagesData from '@/data/packages.json';
+
+const bundles = packagesData.bundles;
+
+const homeFaq = [
+  {
+    question: 'Berapa harga paket wisata di Kemuning?',
+    answer: 'Harga kami sangat terjangkau: River Tubing mulai Rp40.000/orang, Outbound mulai Rp90.000/orang, Jeep Adventure mulai Rp300.000/jeep (4–5 orang), dan Villa mulai Rp1.200.000/malam. Tersedia paket kombo Super Combo dengan harga lebih hemat.'
+  },
+  {
+    question: 'Apakah paket wisata bisa custom sesuai kebutuhan?',
+    answer: 'Tentu! Semua paket dapat dikustomisasi sesuai jumlah peserta, tema acara, anggaran, dan preferensi Anda. Tim kami siap membantu merancang itinerary terbaik tanpa biaya konsultasi. Hubungi kami via WhatsApp sekarang.'
+  },
+  {
+    question: 'Berapa minimal peserta untuk outbound atau gathering?',
+    answer: 'Untuk Outbound & Team Building, minimal peserta adalah 16–20 orang. Untuk Jeep Adventure dan River Tubing bisa mulai dari perorangan atau rombongan keluarga kecil. Hubungi kami untuk paket yang sesuai jumlah rombongan Anda.'
+  },
+  {
+    question: 'Apakah wisata Kemuning aman untuk anak-anak?',
+    answer: 'Ya, semua program kami dirancang aman untuk anak-anak dengan pengawasan tim profesional. Kami menyediakan life jacket untuk tubing, perlengkapan keamanan lengkap, dan guide bersertifikat untuk setiap aktivitas.'
+  },
+  {
+    question: 'Apakah paket sudah termasuk makan siang?',
+    answer: 'Tergantung paket yang dipilih. Beberapa paket sudah termasuk makan siang & snack — misalnya Paket Super Combo dan Paket Team Building One Day. Cek detail tiap paket atau tanya langsung via WhatsApp!'
+  },
+  {
+    question: 'Bagaimana cara booking paket wisata Kemuning?',
+    answer: 'Booking sangat mudah! (1) Hubungi kami via WhatsApp, (2) pilih paket yang diinginkan, (3) tentukan tanggal dan jumlah peserta, (4) lakukan pembayaran DP. Tim kami akan langsung konfirmasi dan mempersiapkan semua kebutuhan Anda.'
+  },
+  {
+    question: 'Di mana lokasi Lawu Vista Kemuning?',
+    answer: 'Lawu Vista berlokasi di Kemuning, Ngargoyoso, Karanganyar, Jawa Tengah — kawasan wisata lereng Gunung Lawu yang sejuk, dekat Tawangmangu. Dapat ditempuh sekitar 1 jam dari Kota Solo.'
+  },
+  {
+    question: 'Apakah ada paket kombinasi (jeep + tubing + villa)?',
+    answer: 'Ada! Kami menyediakan paket kombinasi lengkap — Paket Super Combo (Jeep + Tubing + Makan) atau Corporate Retreat 2D1N menginap di Villa dengan aktivitas seharian.'
+  }
+];
+---
+
+<Layout
+  title="Wisata Kemuning Karanganyar – Jeep, Tubing &amp; Villa | Lawu Vista"
+  description="Paket wisata Kemuning terlengkap. Jeep Adventure Rp300rb, River Tubing Rp40rb, Outbound &amp; Villa. 500+ event sukses. Booking WhatsApp, respon <5 menit!"
+  canonical="https://lawuvista.com/"
+  ogImage="/assets/images/og-default.jpg"
+>
+  <JsonLd faq={homeFaq} canonicalUrl="https://lawuvista.com/" />
+
+  <!-- NAVBAR -->
+  <Navbar transparent={true} />
+
+  <!-- HERO SECTION ASLI YANG DIPERKAYA -->
+  <section class="hero" aria-label="Lawu Vista – Wisata Terbaik di Kemuning Karanganyar">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-bg-img" aria-hidden="true">
+      <picture>
+        <source srcset="/assets/images/hero-home-mobile.webp" media="(max-width:767px)" type="image/webp" />
+        <source srcset="/assets/images/hero-home.webp" type="image/webp" />
+        <img
+          src="/assets/images/hero-home.webp"
+          alt="Jeep Adventure Kemuning – Wisata Terbaik Karanganyar Tawangmangu"
+          width="1920"
+          height="1080"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-left">
+            <div class="hero-badge-row">
+              <span class="hero-service-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                #1 Paket Wisata Kemuning &mdash; Jeep, Outbound &amp; Gathering
+              </span>
+            </div>
+
+            <h1 class="hero-title">
+              Paket Wisata <span class="highlight">Kemuning</span><br />Karanganyar untuk<br />Gathering, Jeep &amp; Outbound
+            </h1>
+
+            <p class="hero-subtitle">
+              Mulai Rp40.000/orang. Pilihan paket lengkap untuk kantor, keluarga, sekolah &amp; komunitas: Jeep Adventure, River Tubing, Outbound, Villa, hingga Gathering. Harga transparan, konsultasi gratis, respon cepat.
+            </p>
+
+            <div class="hero-social-proof">
+              <div class="avatar-stack" aria-hidden="true">
+                <div class="avatar-bubble"><img src="/assets/images/avatars/avatar-1.webp" alt="Peserta" width="32" height="32" /></div>
+                <div class="avatar-bubble"><img src="/assets/images/avatars/avatar-2.webp" alt="Peserta" width="32" height="32" /></div>
+                <div class="avatar-bubble"><img src="/assets/images/avatars/avatar-3.webp" alt="Peserta" width="32" height="32" /></div>
+                <div class="avatar-bubble"><img src="/assets/images/avatars/avatar-4.webp" alt="Peserta" width="32" height="32" /></div>
+              </div>
+              <div>
+                <div class="hero-rating-row">
+                  <div class="hero-rating-stars" role="img" aria-label="Rating 4.9 dari 5">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </div>
+                  <span class="hero-rating-text"><strong>4.9/5</strong> &bull; 250+ Ulasan</span>
+                </div>
+                <span class="hero-rating-text">Dipercaya 2.500+ peserta puas</span>
+              </div>
+            </div>
+
+            <div class="hero-cta-row">
+              <a
+                href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20konsultasi%20paket%20wisata%20Kemuning."
+                class="btn btn-wa btn-lg lv-wa-cta"
+                target="_blank"
+                rel="noopener"
+                data-package-id="home-hero-wa"
+                data-default-msg="Halo Lawu Vista, saya ingin konsultasi paket wisata Kemuning."
+              >
+                <svg class="wa-icon-svg" width="22" height="22" aria-hidden="true"><use href="#icon-wa"/></svg>
+                <span>Konsultasi Gratis Sekarang<small>Respon cepat 08.00&ndash;20.00 WIB</small></span>
+              </a>
+              <a href="#bundles" class="btn btn-outline btn-lg">
+                <span>Lihat Paket Bundling Hemat<small>Hemat s/d Rp65.000/orang</small></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Right – Desktop Stat Cards -->
+          <div class="hero-right" aria-hidden="true">
+            <div class="hero-stat-card hero-stat-featured">
+              <div class="stat-n">500<span>+</span></div>
+              <div class="stat-l">Event Berhasil</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="stat-n">2.500<span>+</span></div>
+              <div class="stat-l">Peserta Puas</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="stat-n">4.9<span>/5</span></div>
+              <div class="stat-l">Rating Pelanggan</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="stat-n">4<span>+</span></div>
+              <div class="stat-l">Layanan Lengkap</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST MARQUEE RESMI -->
+  <TrustMarquee />
+
+  <!-- LAYANAN UTAMA KEMUNING -->
+  <section class="services-section section" id="services" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Layanan Wisata Kemuning</span>
+        <h2 class="section-title" id="services-heading">4 Layanan Wisata Terbaik di Kemuning</h2>
+        <p class="section-subtitle">Satu booking, pengalaman lengkap — dipercaya 2.500+ peserta puas &amp; ratusan corporate gathering di Kemuning Karanganyar</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- 1. OUTBOUND -->
+        <article class="service-card reveal">
+          <div class="service-card-img">
+            <img src="/assets/images/service-outbound.webp" alt="Outbound & Team Building Kemuning" width="600" height="360" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover" />
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">Outbound Kemuning</h3>
+            <p class="service-card-desc">Mau gathering yang seru, rame, dan nggak ngebosenin? Outbound Kemuning cocok untuk kantor, sekolah, komunitas, dan keluarga besar.</p>
+            <div class="service-card-price">Mulai <strong>Rp90.000</strong> /orang</div>
+            <div class="service-card-actions">
+              <a href="/outbound-kemuning/" class="btn btn-secondary btn-sm">Lihat Detail Paket</a>
+              <a href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20info%20paket%20Outbound%20Kemuning." class="btn btn-wa btn-sm lv-wa-cta" target="_blank" rel="noopener">
+                <svg class="wa-icon-svg" width="16" height="16" aria-hidden="true"><use href="#icon-wa"/></svg> Chat WA
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. JEEP -->
+        <article class="service-card reveal">
+          <div class="service-card-img">
+            <img src="/assets/images/service-jeep.webp" alt="Jeep Adventure Kemuning" width="600" height="360" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover" />
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">Jeep Adventure Kemuning</h3>
+            <p class="service-card-desc">Offroad seru melintasi kebun teh, air terjun & bukit paralayang. Muat 4–5 orang per jeep, driver profesional dan ramah!</p>
+            <div class="service-card-price">Mulai <strong>Rp300.000</strong> /jeep</div>
+            <div class="service-card-actions">
+              <a href="/jeep-adventure-kemuning/" class="btn btn-secondary btn-sm">Lihat Detail Paket</a>
+              <a href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20info%20Jeep%20Adventure%20Kemuning." class="btn btn-wa btn-sm lv-wa-cta" target="_blank" rel="noopener">
+                <svg class="wa-icon-svg" width="16" height="16" aria-hidden="true"><use href="#icon-wa"/></svg> Chat WA
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. TUBING -->
+        <article class="service-card reveal">
+          <div class="service-card-img">
+            <img src="/assets/images/service-tubing.webp" alt="River Tubing Kemuning" width="600" height="360" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover" />
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">River Tubing Kemuning</h3>
+            <p class="service-card-desc">Arung jeram ban di aliran sungai alami yang jernih dan segar. Dilengkapi helm &amp; pelampung standar, sangat aman untuk anak &amp; pemula.</p>
+            <div class="service-card-price">Mulai <strong>Rp40.000</strong> /orang</div>
+            <div class="service-card-actions">
+              <a href="/river-tubing-kemuning/" class="btn btn-secondary btn-sm">Lihat Detail Paket</a>
+              <a href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20info%20River%20Tubing%20Kemuning." class="btn btn-wa btn-sm lv-wa-cta" target="_blank" rel="noopener">
+                <svg class="wa-icon-svg" width="16" height="16" aria-hidden="true"><use href="#icon-wa"/></svg> Chat WA
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. VILLA -->
+        <article class="service-card reveal">
+          <div class="service-card-img">
+            <img src="/assets/images/service-villa.webp" alt="Villa Kemuning" width="600" height="360" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover" />
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">Villa Kemuning</h3>
+            <p class="service-card-desc">Menginap nyaman dan sejuk di tengah perkebunan teh dengan pemandangan langsung Gunung Lawu. Fasilitas lengkap, cocok untuk rombongan.</p>
+            <div class="service-card-price">Mulai <strong>Rp1.200.000</strong> /malam</div>
+            <div class="service-card-actions">
+              <a href="/villa-kemuning/" class="btn btn-secondary btn-sm">Lihat Detail Paket</a>
+              <a href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20info%20Villa%20Kemuning." class="btn btn-wa btn-sm lv-wa-cta" target="_blank" rel="noopener">
+                <svg class="wa-icon-svg" width="16" height="16" aria-hidden="true"><use href="#icon-wa"/></svg> Chat WA
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION BARU YANG DIAKUI: BUNDLING JUARA & CALCULATOR ROMBONGAN -->
+  <section id="bundles" class="packages-section section" style="background:#fdf4ff;border-top:1px solid #f0abfc;border-bottom:1px solid #f0abfc;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="background:var(--primary);color:#fff;padding:.3rem .9rem;border-radius:99px;">⭐ Rekomendasi Paling Hemat (Best Value)</span>
+        <h2 class="section-title">Paket Bundling Komplit &amp; Paling Favorit</h2>
+        <p class="section-subtitle">Gabungkan Jeep Adventure, River Tubing, dan Makan Siang Prasmanan untuk hemat biaya rombongan s/d Rp65.000/orang!</p>
+      </div>
+
+      <div class="packages-grid" style="max-width:1100px;margin:0 auto 2.5rem;">
+        {bundles.map((bundle, idx) => (
+          <BundleCard pkg={bundle as any} featured={idx === 0} />
+        ))}
+      </div>
+
+      <!-- Pax Calculator Interaktif -->
+      <PaxCalculator pricePerPax={195000} bundleName="Super Combo (Jeep + Tubing + Makan)" />
+    </div>
+  </section>
+
+  <!-- BENEFITS (5 ALASAN MEMILIH LAWU VISTA) -->
+  <section class="benefit-section section" id="keunggulan" aria-labelledby="benefit-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Kenapa Memilih Lawu Vista?</span>
+        <h2 class="section-title" id="benefit-heading">5 Alasan 2.500+ Peserta Selalu Kembali ke Lawu Vista</h2>
+        <p class="section-subtitle">Bukan janji — ini fakta yang sudah dibuktikan ribuan peserta yang puas</p>
+      </div>
+      <div class="benefit-grid">
+        <div class="benefit-card reveal">
+          <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h3 class="benefit-title">Tim Profesional</h3>
+          <p class="benefit-desc">Guide &amp; fasilitator bersertifikat, berpengalaman 5+ tahun menangani 500+ event wisata &amp; gathering dengan kepuasan tinggi.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+          <h3 class="benefit-title">Harga Transparan</h3>
+          <p class="benefit-desc">Harga tertera sudah all-in, nol biaya dadakan. Apa yang tertulis, itu yang Anda bayar — tidak lebih.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+          <h3 class="benefit-title">Fleksibel &amp; Custom</h3>
+          <p class="benefit-desc">Dari 10 hingga 500 peserta, kami siap custom paket, rute, tema &amp; anggaran sesuai kebutuhan Anda.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="benefit-title">Keamanan Terjamin</h3>
+          <p class="benefit-desc">Peralatan berstandar keamanan internasional, briefing safety wajib, guide aktif bersertifikat — ketenangan pikiran Anda dijamin.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div>
+          <h3 class="benefit-title">Respon Cepat</h3>
+          <p class="benefit-desc">Chat WhatsApp sekarang, rata-rata dibalas dalam 5 menit. Konsultasi gratis, tanpa basa-basi, langsung solusi!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS (CARA BOOKING) -->
+  <section class="how-section section" aria-labelledby="how-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Cara Booking</span>
+        <h2 class="section-title" id="how-heading">Pesan Sekarang dalam 4 Langkah Mudah</h2>
+        <p class="section-subtitle">Dari chat hingga konfirmasi — selesai dalam hitungan menit. Tanpa antri, tanpa ribet!</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">1</div>
+          <h3 class="how-step-title">Chat WhatsApp</h3>
+          <p class="how-step-desc">Chat sekarang &amp; langsung dilayani — respon rata-rata di bawah 5 menit!</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">2</div>
+          <h3 class="how-step-title">Pilih Paket</h3>
+          <p class="how-step-desc">Konsultasi GRATIS, kami bantu pilih paket paling pas untuk jumlah peserta &amp; anggaran Anda.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">3</div>
+          <h3 class="how-step-title">Konfirmasi &amp; DP</h3>
+          <p class="how-step-desc">Amankan tanggal favorit Anda dengan DP ringan — slot weekend &amp; libur nasional cepat penuh!</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">4</div>
+          <h3 class="how-step-title">Nikmati Wisata!</h3>
+          <p class="how-step-desc">Hadir, tim pro kami sambut &amp; siapkan segalanya. Anda tinggal nikmati — dijamin ketagihan!</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:3rem">
+        <a href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20booking%20paket%20wisata%20Kemuning.%20Bisa%20bantu%3F" class="btn btn-wa btn-lg lv-wa-cta" target="_blank" rel="noopener">
+          <svg class="wa-icon-svg" width="20" height="20" aria-hidden="true"><use href="#icon-wa"/></svg> Mulai Booking Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION -->
+  <section class="gallery-section section" id="gallery" aria-labelledby="gallery-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Galeri Aktivitas</span>
+        <h2 class="section-title" id="gallery-heading">Momen Nyata dari Ribuan Peserta Puas</h2>
+        <p class="section-subtitle">2.500+ peserta sudah merasakan — foto ini buktinya. Kapan giliran Anda?</p>
+      </div>
+      <div class="gallery-grid" id="gallery-grid">
+        <div class="gallery-item">
+          <img src="/assets/images/gallery/gallery-home-1-jeep.webp" alt="Jeep Adventure Kemuning – Konvoi seru di perkebunan teh" width="600" height="450" loading="lazy" decoding="async">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">Jeep Adventure 4x4</span>
+            <div class="gallery-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery/gallery-home-2-tubing.webp" alt="River Tubing Kemuning – Seru bersama di sungai" width="600" height="450" loading="lazy" decoding="async">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">River Tubing Alami</span>
+            <div class="gallery-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery/gallery-home-3-outbound.webp" alt="Outbound Kemuning – Momen kebersamaan di alam terbuka" width="600" height="450" loading="lazy" decoding="async">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">Outbound &amp; Team Building</span>
+            <div class="gallery-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery/gallery-home-4-villa.webp" alt="Event &amp; Gathering Kemuning – Rombongan wisata" width="600" height="450" loading="lazy" decoding="async">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">Villa View Gunung Lawu</span>
+            <div class="gallery-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery/gallery-home-5-keamanan.webp" alt="Keamanan terjamin – Helm dan pelampung standar" width="600" height="450" loading="lazy" decoding="async">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">Standar Safety Terjamin</span>
+            <div class="gallery-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery/gallery-home-6-event.webp" alt="500+ event sukses – Team building &amp; gathering Kemuning" width="600" height="450" loading="lazy" decoding="async">
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-caption">500+ Event Instansi</span>
+            <div class="gallery-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem">
+        <p style="color:rgba(255,255,255,.5);font-size:.875rem;margin-bottom:1.25rem">Ingin melihat lebih banyak momen seru di Kemuning?</p>
+        <a href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20melihat%20foto%20dan%20video%20kegiatan%20wisata%20Kemuning." class="btn btn-wa btn-lg lv-wa-cta" target="_blank" rel="noopener">
+          <svg class="wa-icon-svg" width="20" height="20" aria-hidden="true"><use href="#icon-wa"/></svg> Minta Foto &amp; Video Kegiatan
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION ASLI -->
+  <section class="testimonial-section section section-alt" id="testimonials" aria-labelledby="testi-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Testimoni Pelanggan</span>
+        <h2 class="section-title" id="testi-heading">Bukan Kata Kami — Ini Kata Mereka</h2>
+        <p class="section-subtitle">Rating bintang 5 dari peserta nyata, bukan endorse berbayar. Lihat sendiri!</p>
+      </div>
+      <div class="testimonial-grid">
+        <article class="testimonial-card reveal">
+          <blockquote class="testi-quote">Pengalaman jeep adventure yang luar biasa! Pemandu ramah, jalur menantang, pemandangan perkebunan teh Kemuning dari atas jeep benar-benar memukau. Pasti akan ke sini lagi!</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Andi Prasetyo</div>
+              <div class="testi-city">Jakarta &ndash; Jeep Adventure</div>
+              <div class="testi-stars" role="img" aria-label="Rating 5 bintang">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card reveal">
+          <blockquote class="testi-quote">River tubing seru banget! Airnya jernih dan segar, guide-nya profesional dan sabar. Kami sekeluarga sangat menikmati setiap momen. Harga juga sesuai dengan yang ditawarkan, tidak ada biaya tersembunyi.</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">D</div>
+            <div>
+              <div class="testi-name">Dewi Lestari</div>
+              <div class="testi-city">Surabaya &ndash; River Tubing</div>
+              <div class="testi-stars" role="img" aria-label="Rating 5 bintang">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card reveal">
+          <blockquote class="testi-quote">Gathering perusahaan kami sukses besar bersama Lawu Vista. Fasilitator profesional, program outbound variatif dan menyenangkan. Tim kami makin kompak. Sangat direkomendasikan!</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#9333ea,#7c3aed)">B</div>
+            <div>
+              <div class="testi-name">Budi Santoso</div>
+              <div class="testi-city">Semarang &ndash; Corporate Outbound</div>
+              <div class="testi-stars" role="img" aria-label="Rating 5 bintang">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION ASLI -->
+  <section class="faq-section section" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">FAQ &ndash; Pertanyaan Umum</span>
+        <h2 class="section-title" id="faq-heading">Pertanyaan yang Sering Ditanyakan</h2>
+        <p class="section-subtitle">Jawaban lengkap seputar paket wisata, outbound, jeep adventure, tubing, dan villa Kemuning</p>
+      </div>
+      <div class="faq-grid">
+        {homeFaq.map((item, idx) => (
+          <div class="faq-item" id={`faq-${idx}`}>
+            <button class="faq-question" aria-expanded="false" aria-controls={`faq-${idx}-ans`}>
+              {item.question}
+              <span class="faq-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer" id={`faq-${idx}-ans`} role="region" aria-hidden="true">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA SECTION ASLI -->
+  <section class="cta-section" id="cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-left">
+          <h2 id="cta-heading">Siap Merencanakan<br />Wisata &amp; Gathering Anda?</h2>
+          <p>Konsultasikan kebutuhan Anda sekarang — gratis! Tim profesional Lawu Vista siap merancang paket terbaik untuk wisata keluarga, gathering corporate, outbound, atau menginap di Kemuning Karanganyar.</p>
+        </div>
+        <div class="cta-right">
+          <div class="cta-right-icon" aria-hidden="true">
+            <svg class="wa-icon-svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.528 5.843L0 24l6.335-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.357-.214-3.762.895.954-3.667-.234-.375A9.776 9.776 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182S21.818 6.574 21.818 12 17.426 21.818 12 21.818z"/></svg>
+          </div>
+          <h3>Chat WhatsApp Sekarang</h3>
+          <p class="cta-hours">Respon cepat 08.00&ndash;20.00 WIB</p>
+          <a
+            href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20konsultasi%20paket%20wisata%20Kemuning."
+            class="btn btn-wa btn-lg btn-block lv-wa-cta"
+            target="_blank"
+            rel="noopener"
+            data-package-id="cta-bottom"
+            data-default-msg="Halo Lawu Vista, saya ingin konsultasi paket wisata Kemuning."
+          >
+            Mulai Konsultasi Gratis
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER ASLI -->
+  <Footer />
+</Layout>

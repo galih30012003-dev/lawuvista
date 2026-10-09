@@ -1,0 +1,67 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faq?: FaqItem[];
+  canonicalUrl?: string;
+}
+
+const {
+  faq = [],
+  canonicalUrl = 'https://lawuvista.com/'
+} = Astro.props;
+
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['TravelAgency', 'TouristInformationCenter', 'LocalBusiness'],
+  'name': 'Lawu Vista Kemuning',
+  'description': 'Paket wisata & gathering terlengkap di Kemuning, Karanganyar: Jeep Adventure, River Tubing, Outbound & Villa dengan pemandangan Gunung Lawu.',
+  'url': canonicalUrl,
+  'telephone': '+6281228237512',
+  'image': 'https://lawuvista.com/assets/images/og-default.jpg',
+  'logo': 'https://lawuvista.com/assets/images/logos/logo.webp',
+  'priceRange': 'Rp40.000 - Rp1.200.000',
+  'address': {
+    '@type': 'PostalAddress',
+    'streetAddress': 'Kemuning, Ngargoyoso',
+    'addressLocality': 'Karanganyar',
+    'addressRegion': 'Jawa Tengah',
+    'addressCountry': 'ID'
+  },
+  'geo': {
+    '@type': 'GeoCoordinates',
+    'latitude': -7.6247,
+    'longitude': 111.1308
+  },
+  'openingHoursSpecification': {
+    '@type': 'OpeningHoursSpecification',
+    'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    'opens': '07:00',
+    'closes': '18:00'
+  },
+  'aggregateRating': {
+    '@type': 'AggregateRating',
+    'ratingValue': '4.9',
+    'reviewCount': '500'
+  }
+};
+
+const faqSchema = faq.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': faq.map(item => ({
+    '@type': 'Question',
+    'name': item.question,
+    'acceptedAnswer': {
+      '@type': 'Answer',
+      'text': item.answer
+    }
+  }))
+} : null;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+{faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}

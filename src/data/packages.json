@@ -1,0 +1,542 @@
+{
+  "bundles": [
+    {
+      "id": "bundle-super-combo",
+      "category": "bundle",
+      "targetAudience": "b2c",
+      "name": "Super Combo: Jeep + Tubing + Makan",
+      "badge": "PALING LARIS (BEST VALUE)",
+      "tagline": "Paket liburan all-in terfavorit keluarga & rombongan muda",
+      "priceAmount": 195000,
+      "priceUnit": "/orang",
+      "originalPrice": 260000,
+      "minPax": 4,
+      "isPopular": true,
+      "isHeroBundle": true,
+      "features": [
+        "Jeep Adventure Offroad Rute Seru Kebun Teh",
+        "River Tubing Kali Pucung / Kali Guci (Safety Lengkap)",
+        "Makan Siang Prasmanan Khas Desa Kemuning",
+        "Free Welcome Drink Teh Asli Kemuning & Snack",
+        "Free Dokumentasi Foto & Video Selama Tour",
+        "Fasilitas Tempat Transit, Resto & Toilet Bersih"
+      ],
+      "image": "/assets/images/pkg-tubing-makan.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik ambil Paket Bundling Super Combo (Jeep + Tubing + Makan) Rp195rb/orang. Bisa cek ketersediaan slot?"
+    },
+    {
+      "id": "bundle-corporate-retreat",
+      "category": "bundle",
+      "targetAudience": "b2b",
+      "name": "Corporate Retreat: Outbound + Villa + Jeep",
+      "badge": "REKOMENDASI INSTANSI",
+      "tagline": "Solusi all-in gathering & team building 2 Hari 1 Malam tanpa repot",
+      "priceAmount": 450000,
+      "priceUnit": "/orang",
+      "originalPrice": 550000,
+      "minPax": 20,
+      "isPopular": true,
+      "isHeroBundle": true,
+      "features": [
+        "Menginap 2D1N di Villa Kemuning (View Gunung Lawu)",
+        "Program Outbound Team Building + Fasilitator Bersertifikat",
+        "Jeep Adventure Sunrise Tour Rute Menantang",
+        "3x Makan Prasmanan + 2x Coffee Break & Snack",
+        "Pemakaian Hall / Aula Pertemuan + Sound System Lengkap",
+        "Dokumentasi Foto, Video & Drone Profesional",
+        "Invoice Resmi, Kuitansi, & Legalitas Perusahaan Lengkap"
+      ],
+      "image": "/assets/images/outbound-hero.webp",
+      "waTemplate": "Halo Lawu Vista, kami dari instansi/perusahaan ingin konsultasi Paket Corporate Retreat 2D1N (Outbound + Villa + Jeep). Mohon kirimkan proposal resmi."
+    },
+    {
+      "id": "bundle-family-fun",
+      "category": "bundle",
+      "targetAudience": "b2c",
+      "name": "Family Adventure: Jeep Offroad + Tubing",
+      "badge": "RAMAH ANAK",
+      "tagline": "Petualangan ceria keluarga dengan rute ramah anak & pemula",
+      "priceAmount": 145000,
+      "priceUnit": "/orang",
+      "originalPrice": 190000,
+      "minPax": 4,
+      "isPopular": false,
+      "isHeroBundle": false,
+      "features": [
+        "Jeep Adventure Rute Short Khusus Keluarga & Anak",
+        "River Tubing Kali Pucung (Air Tenang & Sangat Aman)",
+        "Perlengkapan Pelampung & Helm Anak Bersertifikat",
+        "Guide Profesional Pendamping Khusus Rombongan",
+        "Free Dokumentasi Foto Bareng Keluarga"
+      ],
+      "image": "/assets/images/service-jeep.webp",
+      "waTemplate": "Halo Lawu Vista, saya mau tanya Paket Family Adventure (Jeep + Tubing Ramah Anak) Rp145rb/orang untuk keluarga."
+    }
+  ],
+  "jeep": [
+    {
+      "id": "jeep-short-1",
+      "category": "jeep",
+      "targetAudience": "b2c",
+      "name": "Jeep Short 1",
+      "tagline": "Rute air terjun jumog & telaga madirda",
+      "priceAmount": 300000,
+      "priceUnit": "/jeep",
+      "minPax": 4,
+      "maxPax": 5,
+      "features": [
+        "Start Transit Area",
+        "Air Terjun Jumog",
+        "Kampung Sayur Kemuning",
+        "Telaga Madirda",
+        "Finish (Kapasitas 4–5 Orang/Jeep)"
+      ],
+      "image": "/assets/images/packages/jeep-short-1.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Paket Jeep Short 1 (Rp300.000/jeep). Bisa info jadwal kosong?"
+    },
+    {
+      "id": "jeep-short-2",
+      "category": "jeep",
+      "targetAudience": "b2c",
+      "name": "Jeep Short 2",
+      "tagline": "Rute offroad kampung gunung & air terjun",
+      "priceAmount": 400000,
+      "priceUnit": "/jeep",
+      "minPax": 4,
+      "maxPax": 5,
+      "features": [
+        "Start Transit Area",
+        "Air Terjun Jumog",
+        "Kampung Sayur Kemuning",
+        "Offroad Kampung Gunung",
+        "Telaga Madirda",
+        "Finish (Kapasitas 4–5 Orang/Jeep)"
+      ],
+      "image": "/assets/images/packages/jeep-short-2.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Paket Jeep Short 2 (Rp400.000/jeep). Bisa info jadwal kosong?"
+    },
+    {
+      "id": "jeep-short-3",
+      "category": "jeep",
+      "targetAudience": "b2c",
+      "name": "Jeep Short 3",
+      "tagline": "Rute bukit gunung cilik & kebun teh",
+      "priceAmount": 450000,
+      "priceUnit": "/jeep",
+      "minPax": 4,
+      "maxPax": 5,
+      "features": [
+        "Start Transit Area",
+        "Bukit Gunung Cilik / Lingkar Nol",
+        "Explore Kebun Teh Kemuning",
+        "Jimber Park",
+        "Finish (Kapasitas 4–5 Orang/Jeep)"
+      ],
+      "image": "/assets/images/packages/jeep-short-3.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Paket Jeep Short 3 (Rp450.000/jeep). Bisa info jadwal kosong?"
+    },
+    {
+      "id": "jeep-short-plus-1",
+      "category": "jeep",
+      "targetAudience": "b2c",
+      "name": "Jeep Short Plus 1",
+      "tagline": "Rute paralayang & offroad hutan pinus",
+      "priceAmount": 450000,
+      "priceUnit": "/jeep",
+      "minPax": 4,
+      "maxPax": 5,
+      "features": [
+        "Start Transit Area",
+        "Paralayang Margo Lawu",
+        "Offroad Buper Hutan Pinus",
+        "Finish (Kapasitas 4–5 Orang/Jeep)"
+      ],
+      "image": "/assets/images/packages/jeep-short-plus-1.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Paket Jeep Short Plus 1 (Rp450.000/jeep). Bisa info lebih lanjut?"
+    },
+    {
+      "id": "jeep-short-plus-2",
+      "category": "jeep",
+      "targetAudience": "b2c",
+      "name": "Jeep Short Plus 2",
+      "badge": "TERLARIS",
+      "tagline": "Rute air terjun watu payung & offroad seru",
+      "priceAmount": 450000,
+      "priceUnit": "/jeep",
+      "minPax": 4,
+      "maxPax": 5,
+      "isPopular": true,
+      "features": [
+        "Start Transit Area",
+        "Paralayang Margo Lawu",
+        "Air Terjun Watu Payung",
+        "Offroad Medan Basah Watu Payung",
+        "Finish (Kapasitas 4–5 Orang/Jeep)"
+      ],
+      "image": "/assets/images/pkg-jeep-dokumentasi.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Paket Jeep Short Plus 2 (Rp450.000/jeep). Apakah slot weekend masih ada?"
+    },
+    {
+      "id": "jeep-medium-1",
+      "category": "jeep",
+      "targetAudience": "b2c",
+      "name": "Jeep Medium 1",
+      "tagline": "Rute sky hills, susur sungai & jimber park",
+      "priceAmount": 600000,
+      "priceUnit": "/jeep",
+      "minPax": 4,
+      "maxPax": 5,
+      "features": [
+        "Start Transit Area",
+        "Sky Hills / Puncak Paralayang / Susur Kebun Teh",
+        "Offroad Hutan Pinus",
+        "Susur Sungai Menantang",
+        "Jimber Park & Finish"
+      ],
+      "image": "/assets/images/packages/jeep-medium-1.webp",
+      "waTemplate": "Halo Lawu Vista, saya ingin booking Paket Jeep Medium 1 (Rp600.000/jeep). Mohon info jadwal."
+    },
+    {
+      "id": "jeep-medium-2",
+      "category": "jeep",
+      "targetAudience": "b2c",
+      "name": "Jeep Medium 2",
+      "tagline": "Rute candi sukuh & taman hutan raya",
+      "priceAmount": 600000,
+      "priceUnit": "/jeep",
+      "minPax": 4,
+      "maxPax": 5,
+      "features": [
+        "Start Transit Area",
+        "Air Terjun Jumog & Candi Sukuh",
+        "Taman Hutan Raya",
+        "Explore Kebun Teh & Susur Sungai",
+        "Jimber Park & Finish"
+      ],
+      "image": "/assets/images/packages/jeep-medium-2.webp",
+      "waTemplate": "Halo Lawu Vista, saya ingin booking Paket Jeep Medium 2 (Rp600.000/jeep). Mohon info jadwal."
+    },
+    {
+      "id": "jeep-long-1",
+      "category": "jeep",
+      "targetAudience": "b2c",
+      "name": "Jeep Long 1",
+      "tagline": "Rute offroad dalang pedot & 7 destinasi",
+      "priceAmount": 800000,
+      "priceUnit": "/jeep",
+      "minPax": 4,
+      "maxPax": 5,
+      "features": [
+        "Start Transit & Air Terjun Jumog",
+        "Offroad Kampung Gunung & Candi Sukuh",
+        "Dalan Pedot Offroad Ekstrem",
+        "Paralayang / Sky Hills",
+        "Offroad Gunung Cilik, Susur Sungai & Jimber Park"
+      ],
+      "image": "/assets/images/packages/jeep-long-1.webp",
+      "waTemplate": "Halo Lawu Vista, saya ingin booking Paket Jeep Long 1 (Rp800.000/jeep). Bisa info detail rute?"
+    },
+    {
+      "id": "jeep-long-2",
+      "category": "jeep",
+      "targetAudience": "b2c",
+      "name": "Jeep Long 2",
+      "badge": "KOMPLIT",
+      "tagline": "Rute puncak candi cetho & offroad ekstrem",
+      "priceAmount": 800000,
+      "priceUnit": "/jeep",
+      "minPax": 4,
+      "maxPax": 5,
+      "isPopular": true,
+      "features": [
+        "Start Transit Area",
+        "Candi Sukuh & Taman Hutan Raya",
+        "Offroad Dalan Pedot",
+        "Paralayang / Sky Hills",
+        "Candi Cetho Kemuning",
+        "Offroad Gunung Cilik & Susur Sungai"
+      ],
+      "image": "/assets/images/packages/jeep-long-2.webp",
+      "waTemplate": "Halo Lawu Vista, saya ingin booking Paket Jeep Long 2 (Rp800.000/jeep) rute Candi Cetho."
+    }
+  ],
+  "tubing": [
+    {
+      "id": "tubing-kali-pucung",
+      "category": "tubing",
+      "targetAudience": "b2c",
+      "name": "River Tubing Kali Pucung",
+      "tagline": "Arung jeram santai & asyik untuk pemula & anak",
+      "priceAmount": 40000,
+      "priceUnit": "/orang",
+      "minPax": 1,
+      "features": [
+        "River Tubing Santai Rute Seru",
+        "Pelampung, Helm & Alat Safety Lengkap",
+        "Pemandu (River Guide) Berpengalaman",
+        "Dokumentasi Foto & Video Pengarungan",
+        "Sangat Cocok untuk Keluarga & Anak-anak"
+      ],
+      "image": "/assets/images/service-tubing.webp",
+      "waTemplate": "Halo Lawu Vista, saya mau tanya paket River Tubing Kali Pucung Rp40.000/orang."
+    },
+    {
+      "id": "tubing-kali-pring-kuning",
+      "category": "tubing",
+      "targetAudience": "b2c",
+      "name": "Kali Pring Kuning",
+      "tagline": "Rute tubing long 1,3 km dengan jeram seru",
+      "priceAmount": 65000,
+      "priceUnit": "/orang",
+      "minPax": 1,
+      "features": [
+        "Rute Tubing Long ± 1,3 KM",
+        "Pelampung & Alat Safety Lengkap",
+        "Pemandu Berpengalaman",
+        "Dokumentasi Foto & Video",
+        "Shuttle Penjemputan ke Lokasi Tubing"
+      ],
+      "image": "/assets/images/packages/tubing-paket-1.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan River Tubing Kali Pring Kuning Rp65.000/orang."
+    },
+    {
+      "id": "tubing-kali-guci",
+      "category": "tubing",
+      "targetAudience": "b2c",
+      "name": "Kali Guci",
+      "badge": "TERLARIS",
+      "tagline": "Sensasi jeram terfavorit dengan opsi rute fleksibel",
+      "priceAmount": 75000,
+      "priceUnit": "/orang",
+      "minPax": 1,
+      "isPopular": true,
+      "features": [
+        "Rute Tubing Short (± 800M)",
+        "Tersedia Opsi Upgrade Medium / Long",
+        "Pelampung & Alat Safety Standar",
+        "Pemandu & Tim Rescue Siap Siaga",
+        "Dokumentasi Foto & Video Seru",
+        "Shuttle Penjemputan Armada"
+      ],
+      "image": "/assets/images/packages/tubing-paket-2.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan River Tubing Kali Guci Rp75.000/orang. Bisa info slot?"
+    },
+    {
+      "id": "tubing-kali-senatah",
+      "category": "tubing",
+      "targetAudience": "b2c",
+      "name": "Kali Senatah",
+      "tagline": "Rute terpanjang 1,8 km penuh petualangan",
+      "priceAmount": 75000,
+      "priceUnit": "/orang",
+      "minPax": 1,
+      "features": [
+        "Rute Tubing Long (± 1,8 KM)",
+        "Pelampung & Alat Safety Lengkap",
+        "Pemandu Berpengalaman",
+        "Dokumentasi Foto & Video",
+        "Pemandangan Alam Asri Sepanjang Aliran"
+      ],
+      "image": "/assets/images/packages/tubing-paket-3.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan River Tubing Kali Senatah Rp75.000/orang."
+    }
+  ],
+  "outbound": [
+    {
+      "id": "outbound-paket-1",
+      "category": "outbound",
+      "targetAudience": "b2b",
+      "name": "Outbound Paket 1 (Fun Games)",
+      "tagline": "Team building hemat lengkap makan siang prasmanan",
+      "priceAmount": 90000,
+      "priceUnit": "/orang",
+      "minPax": 16,
+      "features": [
+        "Welcome Drink & Snack Pagi",
+        "Fun Game & Team Building",
+        "Makan Siang Prasmanan Khas Desa",
+        "Trainer & Fasilitator Berpengalaman",
+        "Tool Game Lengkap & Sound System",
+        "Tempat Transit Resto Luas",
+        "Dokumentasi Foto & Video Acara"
+      ],
+      "image": "/assets/images/packages/outbound-paket-1.webp",
+      "waTemplate": "Halo Lawu Vista, saya ingin info Outbound Paket 1 (Rp90.000/orang) untuk rombongan."
+    },
+    {
+      "id": "outbound-paket-2",
+      "category": "outbound",
+      "targetAudience": "b2b",
+      "name": "Outbound Paket 2 (+ Tubing Kali Guci)",
+      "badge": "+ TUBING",
+      "tagline": "Kombinasi team building dan river tubing kali guci",
+      "priceAmount": 135000,
+      "priceUnit": "/orang",
+      "minPax": 16,
+      "features": [
+        "Welcome Drink & Snack Pagi",
+        "Fun Game & Team Building",
+        "River Tubing Kali Guci",
+        "Makan Siang Prasmanan",
+        "Trainer, Fasilitator & Tool Game",
+        "Tempat Transit (Resto & Sound)",
+        "Dokumentasi Foto & Video"
+      ],
+      "image": "/assets/images/packages/outbound-paket-2.webp",
+      "waTemplate": "Halo Lawu Vista, saya ingin info Outbound Paket 2 (Rp135.000/orang + Tubing) untuk rombongan."
+    },
+    {
+      "id": "outbound-paket-3",
+      "category": "outbound",
+      "targetAudience": "b2b",
+      "name": "Outbound Paket 3 (+ Jeep Short 1)",
+      "badge": "TERLARIS",
+      "tagline": "Kombinasi team building, makan prasmanan & jeep adventure",
+      "priceAmount": 180000,
+      "priceUnit": "/orang",
+      "minPax": 16,
+      "isPopular": true,
+      "features": [
+        "Welcome Drink & Snack",
+        "Fun Game (Team Building) / River Tubing",
+        "Jeep Adventure Rute Short Offroad",
+        "Makan Siang Prasmanan",
+        "Trainer & Fasilitator Profesional",
+        "Tempat Transit (Resto & Sound System)",
+        "Dokumentasi Foto & Video Liputan"
+      ],
+      "image": "/assets/images/pkg-team-building.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Outbound Paket 3 (Rp180.000/orang) untuk rombongan kantor kami."
+    },
+    {
+      "id": "outbound-paket-4",
+      "category": "outbound",
+      "targetAudience": "b2b",
+      "name": "Outbound Paket 4 (+ Jeep Short 2)",
+      "tagline": "Team building dengan jeep short 2 offroad",
+      "priceAmount": 190000,
+      "priceUnit": "/orang",
+      "minPax": 16,
+      "features": [
+        "Welcome Drink & Snack",
+        "Fun Game Team Building",
+        "Jeep Adventure Rute Short 2",
+        "Makan Siang Prasmanan",
+        "Trainer, Fasilitator & Tool Game",
+        "Tempat Transit (Resto & Sound)",
+        "Dokumentasi Foto & Video"
+      ],
+      "image": "/assets/images/packages/outbound-paket-4.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Outbound Paket 4 (Rp190.000/orang) untuk rombongan."
+    },
+    {
+      "id": "outbound-paket-5",
+      "category": "outbound",
+      "targetAudience": "b2b",
+      "name": "Outbound Paket 5 (Komplit Tubing + Jeep)",
+      "badge": "POPULER",
+      "tagline": "Paket komplit: games, tubing kali guci & jeep short 1",
+      "priceAmount": 220000,
+      "priceUnit": "/orang",
+      "minPax": 16,
+      "isPopular": true,
+      "features": [
+        "Welcome Drink & Snack Pagi",
+        "Fun Game Team Building",
+        "River Tubing Kali Guci",
+        "Jeep Adventure Rute Short 1",
+        "Makan Siang Prasmanan",
+        "Trainer, Fasilitator & Tempat Transit",
+        "Dokumentasi Foto & Video Lengkap"
+      ],
+      "image": "/assets/images/packages/outbound-paket-5.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Outbound Paket 5 (Rp220.000/orang - Komplit Tubing + Jeep)."
+    },
+    {
+      "id": "outbound-paket-6",
+      "category": "outbound",
+      "targetAudience": "b2b",
+      "name": "Outbound Paket 6 (Komplit Tubing + Jeep 2)",
+      "tagline": "Paket komplit games, tubing & jeep short 2",
+      "priceAmount": 235000,
+      "priceUnit": "/orang",
+      "minPax": 16,
+      "features": [
+        "Welcome Drink & Snack",
+        "Fun Game Team Building",
+        "River Tubing Kali Guci",
+        "Jeep Adventure Rute Short 2 Offroad",
+        "Makan Siang Prasmanan",
+        "Trainer, Fasilitator & Resto Transit",
+        "Dokumentasi Foto & Video"
+      ],
+      "image": "/assets/images/packages/outbound-paket-6.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Outbound Paket 6 (Rp235.000/orang)."
+    },
+    {
+      "id": "outbound-paket-7",
+      "category": "outbound",
+      "targetAudience": "b2b",
+      "name": "Outbound Paket 7 (Tubing + Jeep Medium 1)",
+      "tagline": "Petualangan seru team building, tubing & jeep medium 1",
+      "priceAmount": 260000,
+      "priceUnit": "/orang",
+      "minPax": 16,
+      "features": [
+        "Welcome Drink & Snack",
+        "Fun Game Team Building",
+        "River Tubing Kali Guci",
+        "Jeep Adventure Rute Medium 1",
+        "Makan Siang Prasmanan",
+        "Trainer, Fasilitator & Tempat Transit",
+        "Dokumentasi Foto & Video"
+      ],
+      "image": "/assets/images/packages/outbound-paket-7.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Outbound Paket 7 (Rp260.000/orang)."
+    },
+    {
+      "id": "outbound-paket-8",
+      "category": "outbound",
+      "targetAudience": "b2b",
+      "name": "Outbound Paket 8 (Tubing + Jeep Medium 2)",
+      "tagline": "Paket maksimal team building, tubing & jeep medium 2",
+      "priceAmount": 275000,
+      "priceUnit": "/orang",
+      "minPax": 16,
+      "features": [
+        "Welcome Drink & Snack",
+        "Fun Game Team Building",
+        "River Tubing Kali Guci",
+        "Jeep Adventure Rute Medium 2",
+        "Makan Siang Prasmanan",
+        "Trainer, Fasilitator & Resto Transit",
+        "Dokumentasi Foto & Video Lengkap"
+      ],
+      "image": "/assets/images/packages/outbound-paket-8.webp",
+      "waTemplate": "Halo Lawu Vista, saya tertarik dengan Outbound Paket 8 (Rp275.000/orang)."
+    }
+  ],
+  "villa": [
+    {
+      "id": "villa-kemuning-private",
+      "category": "villa",
+      "targetAudience": "all",
+      "name": "Villa Lawu Vista Private",
+      "badge": "VIEW GUNUNG LAWU",
+      "tagline": "Tidur di tengah kebun teh dengan pemandangan gunung lawu langsung dari kamar",
+      "priceAmount": 1200000,
+      "priceUnit": "/malam",
+      "isPopular": true,
+      "features": [
+        "Kapasitas Rombongan Keluarga / Tim (Hingga 15-20 Pax)",
+        "Balkon & Teras View Spektakuler Gunung Lawu",
+        "Kamar Tidur Nyaman & Bersih Terawat",
+        "Ruang Tamu Luas, Dapur Lengkap & Alat Masak",
+        "Water Heater (Air Hangat) & WiFi Kencang",
+        "Area Halaman Luas untuk BBQ, Api Unggun & Parkir Bus/Mobil"
+      ],
+      "image": "/assets/images/villa-hero.webp",
+      "waTemplate": "Halo Lawu Vista, saya ingin info ketersediaan Villa Lawu Vista untuk menginap."
+    }
+  ]
+}

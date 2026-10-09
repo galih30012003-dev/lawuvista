@@ -1,0 +1,89 @@
+---
+import type { PackageItem } from '@/types/packages';
+import WhatsAppCTA from './WhatsAppCTA.astro';
+
+interface Props {
+  pkg: PackageItem;
+  featured?: boolean;
+}
+
+const { pkg, featured = false } = Astro.props;
+
+const formattedPrice = new Intl.NumberFormat('id-ID').format(pkg.priceAmount);
+const formattedOriginal = pkg.originalPrice ? new Intl.NumberFormat('id-ID').format(pkg.originalPrice) : null;
+const savings = pkg.originalPrice ? new Intl.NumberFormat('id-ID').format(pkg.originalPrice - pkg.priceAmount) : null;
+---
+
+<div class={`relative flex flex-col bg-white rounded-3xl transition-all duration-300 overflow-hidden ${featured ? 'border-2 border-primary shadow-2xl ring-2 md:ring-4 ring-primary/15 md:scale-[1.02] z-10' : 'border border-gray-200 shadow-md hover:shadow-xl'}`}>
+  {pkg.badge && (
+    <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-primary to-forest text-white text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider px-3 sm:px-3.5 py-1 rounded-full shadow-md">
+      {pkg.badge}
+    </div>
+  )}
+
+  <!-- Image Header -->
+  <div class="h-44 sm:h-52 w-full overflow-hidden relative bg-gray-100 shrink-0">
+    <img
+      src={pkg.image}
+      alt={pkg.name}
+      class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+      loading="lazy"
+      decoding="async"
+      width="600"
+      height="320"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+    {savings && (
+      <span class="absolute bottom-2.5 left-2.5 bg-accent text-white text-[11px] sm:text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">
+        Hemat Rp{savings}{pkg.priceUnit}
+      </span>
+    )}
+  </div>
+
+  <!-- Content Body -->
+  <div class="p-5 sm:p-7 flex-1 flex flex-col justify-between">
+    <div>
+      <span class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-primary mb-1 block">
+        {pkg.category === 'bundle' ? 'Paket Bundling Super Hemat' : 'Pilihan Favorit'}
+      </span>
+      <h3 class="text-lg sm:text-xl font-extrabold text-gray-900 leading-snug">{pkg.name}</h3>
+      <p class="text-xs text-gray-500 mt-1 line-clamp-2">{pkg.tagline}</p>
+
+      <!-- Price Box -->
+      <div class="my-4 sm:my-5 p-3 sm:p-3.5 bg-gradient-to-br from-primary-50 to-white rounded-2xl border border-primary/15">
+        {formattedOriginal && (
+          <div class="text-[11px] text-gray-400 line-through font-medium">Rp{formattedOriginal}</div>
+        )}
+        <div class="flex items-baseline gap-1.5">
+          <span class="text-2xl sm:text-3xl font-black text-primary">Rp{formattedPrice}</span>
+          <span class="text-xs text-gray-600 font-semibold">{pkg.priceUnit}</span>
+        </div>
+        {pkg.minPax && (
+          <div class="text-[10px] sm:text-[11px] text-gray-500 mt-0.5">Min. pemesanan {pkg.minPax} orang</div>
+        )}
+      </div>
+
+      <!-- Feature List -->
+      <ul class="space-y-2 sm:space-y-2.5 mb-6 text-xs sm:text-sm text-gray-700">
+        {pkg.features.map(feat => (
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-wa shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            <span class="leading-relaxed">{feat}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- CTA Button -->
+    <WhatsAppCTA
+      text="Ambil Penawaran Ini"
+      subtext="Kunci Slot Sebelum Penuh"
+      packageId={pkg.id}
+      defaultMessage={pkg.waTemplate}
+      variant={featured ? 'primary' : 'secondary'}
+      className="w-full text-xs sm:text-sm"
+    />
+  </div>
+</div>

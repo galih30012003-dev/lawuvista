@@ -1,0 +1,368 @@
+/* ═══════════════════════════════════════════════════════════════
+   SERVICE PAGES STYLES — JEEP, OUTBOUND, TUBING, VILLA
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. HERO SERVICE PAGES ── */
+.hero-section {
+  position: relative;
+  min-height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 64px;
+}
+.hero-section .hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #150020 0%, #200030 40%, #701a75 70%, #150020 100%);
+  z-index: 0;
+}
+.hero-section .hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: .38;
+  z-index: 1;
+}
+.hero-section .hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(105deg, rgba(10,0,16,.92) 0%, rgba(10,0,16,.7) 55%, rgba(10,0,16,.35) 100%);
+}
+.hero-section .hero-content {
+  position: relative;
+  z-index: 3;
+  padding: 3.5rem 20px 5rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .hero-section .hero-content {
+    padding: 4.5rem 32px 6rem;
+  }
+}
+@media (max-width: 767px) {
+  .hero-section {
+    min-height: 100svh;
+  }
+  .hero-section .hero-content {
+    padding: 1.25rem 20px 2rem;
+  }
+  .hero-badge {
+    margin-bottom: .625rem;
+  }
+  .hero-section .hero-title {
+    font-size: clamp(1.625rem, 7vw, 2.25rem);
+    margin-bottom: .625rem;
+    line-height: 1.15;
+  }
+  .hero-section .hero-subtitle {
+    font-size: .875rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .hero-proof {
+    margin-bottom: 1.25rem;
+  }
+  .hero-cta-group {
+    margin-bottom: 1rem;
+  }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(217,70,239,.25);
+  border: 1px solid rgba(217,70,239,.5);
+  border-radius: 99px;
+  padding: .375rem 1rem;
+  font-size: .78rem;
+  font-weight: 700;
+  color: #f0abfc;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  backdrop-filter: blur(4px);
+}
+.hero-proof {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.hero-avatars {
+  display: flex;
+}
+.avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.7);
+  position: relative;
+  overflow: hidden;
+  background: var(--gray-300);
+  flex-shrink: 0;
+}
+.avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.avatar-circle:not(:first-child) {
+  margin-left: -8px;
+}
+.avatar-circle:nth-child(1) { z-index: 4; }
+.avatar-circle:nth-child(2) { z-index: 3; }
+.avatar-circle:nth-child(3) { z-index: 2; }
+.avatar-circle:nth-child(4) { z-index: 1; }
+
+.hero-stars {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .85rem;
+  color: rgba(255,255,255,.85);
+  margin-bottom: .2rem;
+}
+.hero-stars .stars {
+  display: flex;
+  gap: 1px;
+}
+.hero-proof-text {
+  font-size: .8rem;
+  color: rgba(255,255,255,.65);
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  margin-bottom: 1.75rem;
+  max-width: 340px;
+}
+.hero-cta-group .btn {
+  width: 100%;
+  justify-content: center;
+  white-space: normal;
+  text-align: center;
+  min-width: 0;
+}
+.hero-cta-group .btn small {
+  display: block;
+  font-size: .7rem;
+  font-weight: 400;
+  opacity: .85;
+  line-height: 1.3;
+}
+@media (max-width: 480px) {
+  .hero-cta-group {
+    max-width: 100%;
+  }
+}
+
+/* ── 2. SCARCITY BAR ── */
+.scarcity-bar {
+  background: linear-gradient(90deg, #92400e, #b45309);
+  color: #fef3c7;
+  text-align: center;
+  padding: .625rem 1rem;
+  font-size: .8125rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+/* ── 3. JEEP & SERVICE PACKAGES GRID (.jpkg-*) ── */
+.jpkg-group-label {
+  display: inline-block;
+  background: rgba(217,70,239,.1);
+  color: var(--primary);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .38rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(217,70,239,.25);
+}
+
+.jpkg-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+@media (min-width: 600px) {
+  .jpkg-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .jpkg-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .jpkg-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.jpkg-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+  border: 2px solid #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  transition: transform .32s cubic-bezier(.4,0,.2,1), box-shadow .32s, border-color .32s;
+  position: relative;
+  overflow: hidden;
+  min-height: 370px;
+}
+.jpkg-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 56px rgba(0,0,0,.14), 0 4px 12px rgba(0,0,0,.06);
+  border-color: rgba(217,70,239,.25);
+}
+.jpkg-card-popular {
+  border-color: var(--primary);
+  box-shadow: 0 8px 32px rgba(217,70,239,.28), 0 2px 8px rgba(217,70,239,.12);
+}
+.jpkg-card-popular:hover {
+  box-shadow: 0 24px 64px rgba(217,70,239,.38), 0 6px 20px rgba(217,70,239,.18);
+}
+
+.jpkg-badge {
+  position: absolute;
+  top: .85rem;
+  right: .85rem;
+  z-index: 10;
+  background: linear-gradient(90deg, var(--primary), #9333ea);
+  color: #fff;
+  font-size: .64rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .32rem .85rem;
+  border-radius: 99px;
+  box-shadow: 0 3px 12px rgba(217,70,239,.4);
+}
+
+.jpkg-img {
+  position: relative;
+  height: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #150020, #3b0764);
+}
+.jpkg-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.35) 100%);
+  pointer-events: none;
+}
+.jpkg-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .45s ease;
+}
+.jpkg-card:hover .jpkg-img img {
+  transform: scale(1.07);
+}
+
+.jpkg-header {
+  padding: 1.25rem 1.375rem .875rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+.jpkg-name {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: .625rem;
+  line-height: 1.3;
+}
+.jpkg-card-popular .jpkg-name {
+  color: var(--primary);
+}
+.jpkg-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .35rem;
+  background: linear-gradient(135deg, rgba(217,70,239,.08), rgba(168,85,247,.08));
+  border: 1px solid rgba(217,70,239,.18);
+  border-radius: 12px;
+  padding: .625rem .875rem;
+  width: fit-content;
+}
+.jpkg-price-amount {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--primary);
+  line-height: 1;
+}
+.jpkg-price-unit {
+  font-size: .8rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+.jpkg-price-note {
+  font-size: .72rem;
+  color: #9ca3af;
+  margin-top: .35rem;
+}
+
+.jpkg-routes {
+  list-style: none;
+  padding: 1rem 1.375rem;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+.jpkg-footer {
+  padding: 0 1.375rem 1.375rem;
+  margin-top: auto;
+}
+.jpkg-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  width: 100%;
+  padding: .875rem 1rem;
+  border-radius: 14px;
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .28s cubic-bezier(.4,0,.2,1);
+  border: 2px solid transparent;
+}
+.jpkg-btn-wa {
+  background: linear-gradient(135deg, #25d366, #16a34a);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(37,211,102,.35);
+}
+.jpkg-btn-wa:hover {
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37,211,102,.45);
+}

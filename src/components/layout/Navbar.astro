@@ -1,0 +1,69 @@
+---
+interface Props {
+  transparent?: boolean;
+}
+
+const { transparent = true } = Astro.props;
+---
+
+<nav
+  class={`site-nav ${transparent ? 'nav-transparent nav-transparent-init' : 'nav-scrolled'}`}
+  role="navigation"
+  aria-label="Navigasi utama"
+>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Lawu Vista – Beranda">
+        <img
+          src="/assets/images/logos/logo.webp"
+          alt="Lawu Vista"
+          height="36"
+          width="106"
+          loading="eager"
+          decoding="async"
+          class="logo-img"
+        />
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="/#services">Layanan</a></li>
+        <li><a href="/#packages">Paket &amp; Harga</a></li>
+        <li><a href="/#testimonials">Testimoni</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+      </ul>
+      <a
+        href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20bertanya%20tentang%20paket%20wisata%20Kemuning."
+        class="btn btn-wa nav-cta lv-wa-cta"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat WhatsApp Lawu Vista"
+        data-package-id="nav-cta"
+        data-default-msg="Halo Lawu Vista, saya ingin bertanya tentang paket wisata Kemuning."
+      >
+        <svg class="wa-icon-svg" width="18" height="18" aria-hidden="true"><use href="#icon-wa"/></svg>
+        Chat WhatsApp
+      </a>
+      <button class="nav-mobile-toggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobile-menu" role="navigation" aria-label="Navigasi mobile">
+      <a href="/#services">Layanan</a>
+      <a href="/#packages">Paket &amp; Harga</a>
+      <a href="/#testimonials">Testimoni</a>
+      <a href="/#faq">FAQ</a>
+      <a
+        href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20bertanya%20tentang%20paket%20wisata%20Kemuning."
+        class="btn btn-wa lv-wa-cta"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-package-id="nav-mobile"
+        data-default-msg="Halo Lawu Vista, saya ingin bertanya tentang paket wisata Kemuning."
+      >
+        <svg class="wa-icon-svg" width="16" height="16" aria-hidden="true"><use href="#icon-wa"/></svg>
+        Chat WhatsApp
+      </a>
+    </div>
+  </div>
+</nav>
