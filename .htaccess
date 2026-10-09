@@ -1,0 +1,81 @@
+# ─── SECURITY & DIRECTORY ───────────────────────────────────────
+Options -Indexes
+
+# ─── MIME TYPES ─────────────────────────────────────────────────
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+</IfModule>
+
+# ─── REWRITE: FORCE HTTPS & NON-WWW (301 REDIRECT) ─────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://lawuvista.com/$1 [R=301,L]
+
+  # 2. Force non-WWW
+  RewriteCond %{HTTP_HOST} ^www\.lawuvista\.com$ [NC]
+  RewriteRule ^(.*)$ https://lawuvista.com/$1 [R=301,L]
+</IfModule>
+
+# ─── CUSTOM 404 ERROR PAGE ─────────────────────────────────────
+ErrorDocument 404 /404.html
+
+# ─── COMPRESSION ───────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ─── CACHE CONTROL ──────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML — selalu fresh, tidak di-cache
+  ExpiresByType text/html                 "access plus 0 seconds"
+
+  # CSS & JS — cache 1 tahun (aman karena pakai ?v= di URL)
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType text/javascript           "access plus 1 year"
+
+  # Gambar — cache 1 tahun
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType image/png                 "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType image/x-icon              "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon  "access plus 1 year"
+
+  # Font
+  ExpiresByType font/woff2                "access plus 1 year"
+  ExpiresByType font/woff                 "access plus 1 year"
+</IfModule>
+
+# ─── CACHE-CONTROL HEADERS ──────────────────────────────────────
+<IfModule mod_headers.c>
+  # HTML: no-store supaya browser selalu fetch ulang
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # Aset statis: immutable = browser tidak perlu revalidate selama cache masih valid
+  <FilesMatch "\.(css|js|webp|png|jpg|jpeg|svg|ico|woff2|woff)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# ─── SECURITY HEADERS ───────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>

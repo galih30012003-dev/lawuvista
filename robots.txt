@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block admin dari search engine
+Disallow: /admin-leads/
+
+Sitemap: https://lawuvista.com/sitemap.xml
