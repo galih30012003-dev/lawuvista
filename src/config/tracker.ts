@@ -4,9 +4,8 @@
  */
 
 export const TRACKER_CONFIG = {
-  // Ganti URL ini dengan URL Deployment Google Apps Script Web App Anda
-  // (Format: https://script.google.com/macros/s/AKfycb.../exec)
-  WEBHOOK_URL: 'https://script.google.com/macros/s/AKfycbx_LAWU_VISTA_LEAD_RECEIVER_WEBHOOK/exec',
+  // URL Deployment Google Apps Script Web App Aktif (Lawu Vista Lead Receiver)
+  WEBHOOK_URL: 'https://script.google.com/macros/s/AKfycbxU_28aHWqAlNsR6tnHumjtSWP16irAVlzNm0WoouuDLUk7J06gswRp194XRIUypQKg0Q/exec',
 
   // Nomor WhatsApp Resmi CS Lawu Vista
   WHATSAPP_PHONE: '6281228237512',
