@@ -103,3 +103,42 @@
   opacity: 1 !important;
   transform: none !important;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   HARMONIOUS KEUNGGULAN / BENEFIT GRID (HOMEPAGE & SERVICE PAGES)
+   ═══════════════════════════════════════════════════════════════ */
+.benefit-grid,
+.benefits-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.25rem !important;
+}
+
+@media (min-width: 640px) {
+  .benefit-grid,
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .benefit-grid,
+  .benefits-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+  .benefit-grid-4,
+  .benefits-grid-4 {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .benefit-grid-6,
+  .benefits-grid-6 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefit-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
