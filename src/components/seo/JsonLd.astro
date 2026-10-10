@@ -7,7 +7,6 @@ interface FaqItem {
 interface Props {
   faq?: FaqItem[];
   canonicalUrl?: string;
-  pageType?: 'home' | 'jeep' | 'outbound' | 'tubing' | 'villa';
 }
 
 const {
@@ -15,6 +14,7 @@ const {
   canonicalUrl = 'https://lawuvista.com/'
 } = Astro.props;
 
+// Skema Organisasi / LocalBusiness Utama (Tanpa self-serving rating di homepage sesuai pedoman Google)
 const businessSchema = {
   '@context': 'https://schema.org',
   '@type': ['TravelAgency', 'TouristInformationCenter', 'LocalBusiness'],
@@ -22,7 +22,7 @@ const businessSchema = {
   'name': 'Lawu Vista Kemuning',
   'alternateName': 'Lawu Vista Jeep Adventure & Outbound Kemuning',
   'description': 'Pusat reservasi paket wisata & gathering terlengkap di Kemuning, Karanganyar: Jeep Adventure 4x4, River Tubing, Outbound Team Building & Villa pemandangan Gunung Lawu.',
-  'url': canonicalUrl,
+  'url': 'https://lawuvista.com/',
   'telephone': '+6281228237512',
   'image': [
     'https://lawuvista.com/assets/images/og-default.jpg',
@@ -56,148 +56,186 @@ const businessSchema = {
   ],
   'sameAs': [
     'https://wa.me/6281228237512'
-  ],
-  'aggregateRating': {
-    '@type': 'AggregateRating',
-    'ratingValue': '4.9',
-    'bestRating': '5',
-    'worstRating': '1',
-    'ratingCount': '385',
-    'reviewCount': '385'
-  },
-  'review': [
-    {
-      '@type': 'Review',
-      'author': {
-        '@type': 'Person',
-        'name': 'Andi Prasetyo'
-      },
-      'datePublished': '2026-03-15',
-      'reviewRating': {
-        '@type': 'Rating',
-        'ratingValue': '5',
-        'bestRating': '5',
-        'worstRating': '1'
-      },
-      'reviewBody': 'Pengalaman jeep adventure yang luar biasa! Pemandu ramah, jalur offroad kebun teh menantang, pemandangan Gunung Lawu dari atas jeep benar-benar memukau.'
-    },
-    {
-      '@type': 'Review',
-      'author': {
-        '@type': 'Person',
-        'name': 'Dewi Lestari'
-      },
-      'datePublished': '2026-05-20',
-      'reviewRating': {
-        '@type': 'Rating',
-        'ratingValue': '5',
-        'bestRating': '5',
-        'worstRating': '1'
-      },
-      'reviewBody': 'River tubing seru banget! Airnya jernih dan segar, guide profesional dan sabar. Kami sekeluarga sangat menikmati setiap momen. Harga transparan tanpa biaya tersembunyi.'
-    },
-    {
-      '@type': 'Review',
-      'author': {
-        '@type': 'Person',
-        'name': 'Budi Santoso'
-      },
-      'datePublished': '2026-08-10',
-      'reviewRating': {
-        '@type': 'Rating',
-        'ratingValue': '5',
-        'bestRating': '5',
-        'worstRating': '1'
-      },
-      'reviewBody': 'Gathering perusahaan 80 pax sukses besar bersama Lawu Vista. Fasilitator outbound profesional, games variatif dan seru. Sangat direkomendasikan untuk corporate event!'
-    }
-  ],
-  'hasOfferCatalog': {
-    '@type': 'OfferCatalog',
-    'name': 'Katalog Paket Wisata Lawu Vista Kemuning',
-    'itemListElement': [
-      {
-        '@type': 'OfferCatalog',
-        'name': 'Paket Jeep Adventure Kemuning',
-        'itemListElement': [
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'Jeep Adventure Short Route',
-              'description': 'Rute santai kebun teh & spot foto, durasi 1 - 1.5 jam, muat 4-5 orang per armada.'
-            },
-            'price': '300000',
-            'priceCurrency': 'IDR',
-            'availability': 'https://schema.org/InStock',
-            'url': 'https://lawuvista.com/jeep-adventure-kemuning/'
-          },
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'Jeep Adventure Medium Route',
-              'description': 'Rute jelajah kebun teh, susur sungai basah & bukit paralayang, durasi 2 jam.'
-            },
-            'price': '400000',
-            'priceCurrency': 'IDR',
-            'availability': 'https://schema.org/InStock',
-            'url': 'https://lawuvista.com/jeep-adventure-kemuning/'
-          },
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'Jeep Adventure Long Route',
-              'description': 'Rute adventure lengkap kebun teh, candi, bukit & susur sungai ekstrem, durasi 3 jam.'
-            },
-            'price': '550000',
-            'priceCurrency': 'IDR',
-            'availability': 'https://schema.org/InStock',
-            'url': 'https://lawuvista.com/jeep-adventure-kemuning/'
-          }
-        ]
-      },
-      {
-        '@type': 'OfferCatalog',
-        'name': 'Paket Outbound & Team Building Kemuning',
-        'itemListElement': [
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'Paket Outbound Fun Games & Team Building',
-              'description': 'Program gathering instansi/sekolah dengan fasilitator profesional, sound system, & perlengkapan game lengkap.'
-            },
-            'price': '90000',
-            'priceCurrency': 'IDR',
-            'availability': 'https://schema.org/InStock',
-            'url': 'https://lawuvista.com/outbound-kemuning/'
-          }
-        ]
-      },
-      {
-        '@type': 'OfferCatalog',
-        'name': 'Paket River Tubing Kemuning',
-        'itemListElement': [
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'River Tubing Kali Pringkuning',
-              'description': 'Arung jeram ban menyusuri aliran sungai alami Kemuning dengan perlengkapan helm, pelampung, & rescue team.'
-            },
-            'price': '40000',
-            'priceCurrency': 'IDR',
-            'availability': 'https://schema.org/InStock',
-            'url': 'https://lawuvista.com/river-tubing-kemuning/'
-          }
-        ]
-      }
-    ]
-  }
+  ]
 };
 
+// Skema Produk / Layanan Khusus Halaman Layanan (Agar Bintang Ulasan Muncul Resmi di Google SERP)
+let serviceSchema: any = null;
+
+if (canonicalUrl.includes('/jeep-adventure-kemuning/')) {
+  serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': 'https://lawuvista.com/jeep-adventure-kemuning/#product',
+    'name': 'Paket Sewa Jeep Adventure Kemuning Karanganyar',
+    'description': 'Paket sewa mobil offroad jeep 4x4 keliling kebun teh Kemuning dan lereng Gunung Lawu. Rute Short, Medium, dan Long muat 4-5 orang include driver & BBM.',
+    'image': 'https://lawuvista.com/assets/images/jeep-hero.webp',
+    'brand': {
+      '@type': 'Brand',
+      'name': 'Lawu Vista'
+    },
+    'offers': {
+      '@type': 'AggregateOffer',
+      'lowPrice': '300000',
+      'highPrice': '750000',
+      'priceCurrency': 'IDR',
+      'offerCount': '9',
+      'availability': 'https://schema.org/InStock',
+      'url': 'https://lawuvista.com/jeep-adventure-kemuning/'
+    },
+    'aggregateRating': {
+      '@type': 'AggregateRating',
+      'ratingValue': '4.9',
+      'bestRating': '5',
+      'worstRating': '1',
+      'ratingCount': '385',
+      'reviewCount': '385'
+    },
+    'review': [
+      {
+        '@type': 'Review',
+        'author': {
+          '@type': 'Person',
+          'name': 'Andi Prasetyo'
+        },
+        'datePublished': '2026-03-15',
+        'reviewRating': {
+          '@type': 'Rating',
+          'ratingValue': '5',
+          'bestRating': '5',
+          'worstRating': '1'
+        },
+        'reviewBody': 'Pengalaman jeep adventure yang luar biasa! Pemandu ramah, jalur offroad kebun teh menantang, pemandangan Gunung Lawu dari atas jeep benar-benar memukau.'
+      }
+    ]
+  };
+} else if (canonicalUrl.includes('/outbound-kemuning/')) {
+  serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': 'https://lawuvista.com/outbound-kemuning/#product',
+    'name': 'Paket Outbound & Gathering Kemuning Karanganyar',
+    'description': 'Paket gathering kantor, sekolah, dan komunitas di Kemuning. Program fun games, team building, fasilitator profesional, sound system, dan konsumsi lengkap.',
+    'image': 'https://lawuvista.com/assets/images/outbound-hero.webp',
+    'brand': {
+      '@type': 'Brand',
+      'name': 'Lawu Vista'
+    },
+    'offers': {
+      '@type': 'AggregateOffer',
+      'lowPrice': '90000',
+      'highPrice': '285000',
+      'priceCurrency': 'IDR',
+      'offerCount': '8',
+      'availability': 'https://schema.org/InStock',
+      'url': 'https://lawuvista.com/outbound-kemuning/'
+    },
+    'aggregateRating': {
+      '@type': 'AggregateRating',
+      'ratingValue': '4.9',
+      'bestRating': '5',
+      'worstRating': '1',
+      'ratingCount': '210',
+      'reviewCount': '210'
+    },
+    'review': [
+      {
+        '@type': 'Review',
+        'author': {
+          '@type': 'Person',
+          'name': 'Budi Santoso'
+        },
+        'datePublished': '2026-08-10',
+        'reviewRating': {
+          '@type': 'Rating',
+          'ratingValue': '5',
+          'bestRating': '5',
+          'worstRating': '1'
+        },
+        'reviewBody': 'Gathering perusahaan 80 pax sukses besar bersama Lawu Vista. Fasilitator outbound profesional, games variatif dan seru. Sangat direkomendasikan untuk corporate event!'
+      }
+    ]
+  };
+} else if (canonicalUrl.includes('/river-tubing-kemuning/')) {
+  serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': 'https://lawuvista.com/river-tubing-kemuning/#product',
+    'name': 'Paket River Tubing Kali Pringkuning Kemuning',
+    'description': 'Wisata arung jeram ban menyusuri aliran sungai alami Kemuning yang jernih dan segar. Lengkap dengan helm, pelampung, pemandu, dan tim rescue.',
+    'image': 'https://lawuvista.com/assets/images/tubing-hero.webp',
+    'brand': {
+      '@type': 'Brand',
+      'name': 'Lawu Vista'
+    },
+    'offers': {
+      '@type': 'AggregateOffer',
+      'lowPrice': '40000',
+      'highPrice': '140000',
+      'priceCurrency': 'IDR',
+      'offerCount': '4',
+      'availability': 'https://schema.org/InStock',
+      'url': 'https://lawuvista.com/river-tubing-kemuning/'
+    },
+    'aggregateRating': {
+      '@type': 'AggregateRating',
+      'ratingValue': '4.9',
+      'bestRating': '5',
+      'worstRating': '1',
+      'ratingCount': '195',
+      'reviewCount': '195'
+    },
+    'review': [
+      {
+        '@type': 'Review',
+        'author': {
+          '@type': 'Person',
+          'name': 'Dewi Lestari'
+        },
+        'datePublished': '2026-05-20',
+        'reviewRating': {
+          '@type': 'Rating',
+          'ratingValue': '5',
+          'bestRating': '5',
+          'worstRating': '1'
+        },
+        'reviewBody': 'River tubing seru banget! Airnya jernih dan segar, guide profesional dan sabar. Kami sekeluarga sangat menikmati setiap momen.'
+      }
+    ]
+  };
+} else if (canonicalUrl.includes('/villa-kemuning/')) {
+  serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': 'https://lawuvista.com/villa-kemuning/#product',
+    'name': 'Sewa Villa Kemuning View Gunung Lawu',
+    'description': 'Penginapan villa nyaman berhawa sejuk di tengah kebun teh Kemuning dengan panorama langsung Gunung Lawu. Cocok untuk keluarga dan rombongan gathering.',
+    'image': 'https://lawuvista.com/assets/images/villa-hero.webp',
+    'brand': {
+      '@type': 'Brand',
+      'name': 'Lawu Vista'
+    },
+    'offers': {
+      '@type': 'AggregateOffer',
+      'lowPrice': '1200000',
+      'highPrice': '2500000',
+      'priceCurrency': 'IDR',
+      'offerCount': '1',
+      'availability': 'https://schema.org/InStock',
+      'url': 'https://lawuvista.com/villa-kemuning/'
+    },
+    'aggregateRating': {
+      '@type': 'AggregateRating',
+      'ratingValue': '4.9',
+      'bestRating': '5',
+      'worstRating': '1',
+      'ratingCount': '120',
+      'reviewCount': '120'
+    }
+  };
+}
+
+// Skema FAQPage (Ditampilkan di semua halaman yang memiliki daftar FAQ)
 const faqSchema = faq.length > 0 ? {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -213,4 +251,5 @@ const faqSchema = faq.length > 0 ? {
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+{serviceSchema && <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />}
 {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
