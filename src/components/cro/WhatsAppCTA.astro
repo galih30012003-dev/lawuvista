@@ -46,41 +46,7 @@ const variantStyles = {
 </a>
 
 <script>
-  import { extractUrlTracking, getOrGenerateRefId, formatWhatsAppUrl, sendLeadSignal } from '@/utils/tracker';
-
-  function initSmartCTAs() {
-    const ctas = document.querySelectorAll<HTMLAnchorElement>('.lv-wa-cta');
-    if (!ctas.length) return;
-
-    const tracking = extractUrlTracking();
-    const refId = getOrGenerateRefId();
-
-    ctas.forEach(cta => {
-      if (cta.getAttribute('data-tracker-bound') === 'true') return;
-      cta.setAttribute('data-tracker-bound', 'true');
-
-      const defaultMsg = cta.getAttribute('data-default-msg') || 'Halo Lawu Vista';
-      const packageId = cta.getAttribute('data-package-id') || 'general';
-      const waUrl = formatWhatsAppUrl(defaultMsg, refId);
-
-      cta.setAttribute('href', waUrl);
-
-      cta.addEventListener('click', () => {
-        sendLeadSignal({
-          ref_id: refId,
-          gclid: tracking.gclid,
-          package_id: packageId,
-          utm_source: tracking.utm_source,
-          utm_medium: tracking.utm_medium,
-          utm_campaign: tracking.utm_campaign,
-          utm_term: tracking.utm_term,
-          utm_content: tracking.utm_content,
-          landing_page: window.location.pathname,
-          timestamp: new Date().toISOString()
-        });
-      });
-    });
-  }
+  import { initSmartCTAs, getOrGenerateRefId, sendLeadSignal } from '@/utils/tracker';
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initSmartCTAs);

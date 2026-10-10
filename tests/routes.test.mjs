@@ -20,8 +20,24 @@ routes.forEach(route => {
   assert(html.includes('<title>'), `Halaman ${route.path} wajib memiliki tag <title>`);
   assert(html.includes(`rel="canonical" href="${route.canonical}"`), `Kanonikal URL pada ${route.path} harus presisi (${route.canonical})`);
   assert(html.includes('/assets/fonts/poppins-600.woff2'), `Halaman ${route.path} wajib melakukan preload font Poppins`);
+  assert(html.includes('property="og:image" content="https://'), `Halaman ${route.path} wajib memiliki URL absolut pada og:image`);
   assert(html.length > 500, `Halaman ${route.path} tidak boleh kosong`);
   console.log(`  ✓ Rute '${route.path}' terkompilasi sempurna dengan canonical '${route.canonical}'`);
+});
+
+// Verifikasi file statis penting di folder dist
+const staticFiles = [
+  'dist/robots.txt',
+  'dist/sitemap.xml',
+  'dist/.htaccess',
+  'dist/llms.txt'
+];
+
+staticFiles.forEach(file => {
+  assert(existsSync(file), `File statis penting ${file} wajib ada di dist/`);
+  const content = readFileSync(file, 'utf8');
+  assert(content.length > 20, `File ${file} tidak boleh kosong`);
+  console.log(`  ✓ File publik '${file}' terdistribusi dengan benar ke dist/`);
 });
 
 console.log(`\n🎉 Seluruh ${routes.length} rute Lawu Vista berhasil diverifikasi 100%!`);

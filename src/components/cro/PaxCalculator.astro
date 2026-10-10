@@ -90,9 +90,9 @@ const defaultPackage = packagesData.bundles[0];
     <!-- Output Metrics Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
       <div class="bg-white p-3 sm:p-3.5 rounded-2xl border border-gray-100 shadow-sm text-center">
-        <span class="text-[10px] sm:text-[11px] font-semibold text-gray-400 uppercase tracking-wider block">Armada Jeep</span>
+        <span id="metric-label" class="text-[10px] sm:text-[11px] font-semibold text-gray-400 uppercase tracking-wider block">Armada Jeep</span>
         <span id="jeep-needed-display" class="text-base sm:text-xl font-extrabold text-gray-900 block mt-0.5">2 Unit</span>
-        <span class="text-[10px] text-gray-500">Kapasitas 4-5 pax/mobil</span>
+        <span id="metric-subtext" class="text-[10px] text-gray-500">Kapasitas 4-5 pax/mobil</span>
       </div>
 
       <div class="bg-white p-3 sm:p-3.5 rounded-2xl border border-gray-100 shadow-sm text-center">
@@ -115,7 +115,8 @@ const defaultPackage = packagesData.bundles[0];
         href="https://wa.me/6281228237512"
         target="_blank"
         rel="noopener noreferrer"
-        class="w-full flex items-center justify-center gap-2 bg-wa hover:bg-wa-dark text-white font-extrabold py-3.5 sm:py-4 px-5 sm:px-6 rounded-2xl shadow-xl shadow-wa/25 transition-transform duration-200 hover:-translate-y-0.5 text-xs sm:text-base cursor-pointer"
+        data-package-id={defaultPackage.id}
+        class="lv-wa-cta w-full flex items-center justify-center gap-2 bg-wa hover:bg-wa-dark text-white font-extrabold py-3.5 sm:py-4 px-5 sm:px-6 rounded-2xl shadow-xl shadow-wa/25 transition-transform duration-200 hover:-translate-y-0.5 text-xs sm:text-base cursor-pointer"
       >
         <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current shrink-0" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
@@ -131,6 +132,8 @@ const defaultPackage = packagesData.bundles[0];
 </div>
 
 <script>
+  import { getOrGenerateRefId, extractUrlTracking, sendLeadSignal } from '@/utils/tracker';
+
   function initCalculator() {
     const packageSelector = document.getElementById('package-selector') as HTMLSelectElement;
     const slider = document.getElementById('pax-slider') as HTMLInputElement;
@@ -139,6 +142,8 @@ const defaultPackage = packagesData.bundles[0];
     const savingsDisplay = document.getElementById('savings-display');
     const totalDisplay = document.getElementById('total-price-display');
     const minPaxLabel = document.getElementById('min-pax-label');
+    const metricLabel = document.getElementById('metric-label');
+    const metricSubtext = document.getElementById('metric-subtext');
     const waBtn = document.getElementById('calc-wa-btn') as HTMLAnchorElement;
 
     if (!packageSelector || !slider || !paxDisplay || !jeepDisplay || !savingsDisplay || !totalDisplay || !waBtn || !minPaxLabel) return;
@@ -159,6 +164,7 @@ const defaultPackage = packagesData.bundles[0];
 
       if (packageData) {
         currentPackage = JSON.parse(packageData);
+        waBtn.setAttribute('data-package-id', currentPackage.id);
 
         // Update slider min based on package minPax
         slider.min = currentPackage.minPax.toString();
@@ -180,24 +186,70 @@ const defaultPackage = packagesData.bundles[0];
       const totalSavings = pax * (currentPackage.originalPrice - currentPackage.priceAmount);
 
       paxDisplay.textContent = `${pax} Orang`;
-      jeepDisplay.textContent = `${jeeps} Unit`;
       savingsDisplay.textContent = `Rp${new Intl.NumberFormat('id-ID').format(totalSavings)}`;
       totalDisplay.textContent = `Rp${new Intl.NumberFormat('id-ID').format(totalPrice)}`;
 
-      // Generate WhatsApp message
-      const refId = sessionStorage.getItem('lv_ref_id') || ('LV-' + Math.floor(1000 + Math.random() * 9000));
+      // Update label & icon dinamis sesuai kategori paket (cegah salah paham paket tubing dapat jeep)
+      const isJeepOrBundle = currentPackage.category === 'bundle' || currentPackage.name.toLowerCase().includes('jeep');
+      const isTubing = currentPackage.category === 'tubing';
+      const isOutbound = currentPackage.category === 'outbound';
+
+      if (metricLabel && metricSubtext) {
+        if (isJeepOrBundle) {
+          metricLabel.textContent = 'Armada Jeep';
+          jeepDisplay.textContent = `${jeeps} Unit`;
+          metricSubtext.textContent = 'Kapasitas 4-5 pax/mobil';
+        } else if (isTubing) {
+          metricLabel.textContent = 'Perlengkapan';
+          jeepDisplay.textContent = `${pax} Set Safety`;
+          metricSubtext.textContent = 'Helm + Life Jacket + Ban';
+        } else if (isOutbound) {
+          metricLabel.textContent = 'Trainer & Fasilitator';
+          const trainers = Math.max(2, Math.ceil(pax / 15));
+          jeepDisplay.textContent = `${trainers} Orang`;
+          metricSubtext.textContent = 'Master Game & Kru';
+        } else {
+          metricLabel.textContent = 'Kapasitas';
+          jeepDisplay.textContent = `${pax} Orang`;
+          metricSubtext.textContent = 'Standar Pelayanan';
+        }
+      } else {
+        jeepDisplay.textContent = `${jeeps} Unit`;
+      }
+
+      // Generate WhatsApp message dengan Ref ID persisten
+      const refId = getOrGenerateRefId();
 
       let message: string;
       if (currentPackage.waTemplate) {
-        // Use custom template if available, add pax and total info
         message = currentPackage.waTemplate.replace(/\?$/, '') +
           `\n\nJumlah peserta: ${pax} orang\nEstimasi total: Rp${new Intl.NumberFormat('id-ID').format(totalPrice)}\n\n[Ref: ${refId}]`;
       } else {
-        // Generic template
         message = `Halo Lawu Vista, kami rombongan ${pax} orang ingin booking ${currentPackage.name}.\nEstimasi: Rp${new Intl.NumberFormat('id-ID').format(totalPrice)}.\nBisa cek ketersediaan tanggal kami?\n\n[Ref: ${refId}]`;
       }
 
       waBtn.setAttribute('href', `https://wa.me/6281228237512?text=${encodeURIComponent(message)}`);
+    }
+
+    // Sambungkan tombol WA ke pelacakan lead (hanya bind sekali)
+    if (waBtn.getAttribute('data-tracker-bound') !== 'true') {
+      waBtn.setAttribute('data-tracker-bound', 'true');
+      waBtn.addEventListener('click', () => {
+        const refId = getOrGenerateRefId();
+        const tracking = extractUrlTracking();
+        sendLeadSignal({
+          ref_id: refId,
+          gclid: tracking.gclid,
+          package_id: currentPackage.id,
+          utm_source: tracking.utm_source,
+          utm_medium: tracking.utm_medium,
+          utm_campaign: tracking.utm_campaign,
+          utm_term: tracking.utm_term,
+          utm_content: tracking.utm_content,
+          landing_page: window.location.pathname,
+          timestamp: new Date().toISOString()
+        });
+      });
     }
 
     packageSelector.addEventListener('change', updatePackage);
@@ -207,5 +259,9 @@ const defaultPackage = packagesData.bundles[0];
     updatePackage();
   }
 
-  document.addEventListener('DOMContentLoaded', initCalculator);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCalculator);
+  } else {
+    initCalculator();
+  }
 </script>

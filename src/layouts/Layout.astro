@@ -14,6 +14,11 @@ const {
   canonical = Astro.url.href,
   ogImage = '/assets/images/og-default.jpg'
 } = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://lawuvista.com';
+const fullOgImage = ogImage.startsWith('http://') || ogImage.startsWith('https://')
+  ? ogImage
+  : `${siteUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`;
 ---
 
 <!DOCTYPE html>
@@ -39,13 +44,13 @@ const {
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:image" content={ogImage} />
+  <meta property="og:image" content={fullOgImage} />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="id_ID" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image" content={fullOgImage} />
 
   <!-- Google Consent Mode v2 Default (Sebelum persetujuan user) -->
   <script is:inline>
@@ -106,7 +111,7 @@ const {
 
   <!-- Client-side Interactive Scripts -->
   <script>
-    import { extractUrlTracking, getOrGenerateRefId, formatWhatsAppUrl, sendLeadSignal } from '@/utils/tracker';
+    import { initSmartCTAs } from '@/utils/tracker';
 
     document.addEventListener('DOMContentLoaded', () => {
       // 1. Navigation Scroll effect
@@ -239,39 +244,8 @@ const {
         });
       }
 
-      // 7. Smart GCLID & Ref ID Tracker for all WA CTAs
-      const ctas = document.querySelectorAll<HTMLAnchorElement>('.lv-wa-cta, a[href*="wa.me"], a[href*="whatsapp.com"]');
-      const tracking = extractUrlTracking();
-      const refId = getOrGenerateRefId();
-
-      ctas.forEach(cta => {
-        const href = cta.getAttribute('href') || '';
-        let baseMsg = 'Halo Lawu Vista';
-        try {
-          const urlObj = new URL(href);
-          const rawMsg = urlObj.searchParams.get('text');
-          if (rawMsg) baseMsg = decodeURIComponent(rawMsg);
-        } catch(e) {}
-
-        const cleanBaseMsg = baseMsg.replace(/\n\n\[Ref: [^\]]+\]/g, '').trim();
-        const finalUrl = formatWhatsAppUrl(cleanBaseMsg, refId);
-        cta.setAttribute('href', finalUrl);
-
-        cta.addEventListener('click', () => {
-          sendLeadSignal({
-            ref_id: refId,
-            gclid: tracking.gclid,
-            package_id: cta.getAttribute('data-package-id') || 'general',
-            utm_source: tracking.utm_source,
-            utm_medium: tracking.utm_medium,
-            utm_campaign: tracking.utm_campaign,
-            utm_term: tracking.utm_term,
-            utm_content: tracking.utm_content,
-            landing_page: window.location.pathname,
-            timestamp: new Date().toISOString()
-          });
-        });
-      });
+      // 7. Smart GCLID & Ref ID Tracker for all WA CTAs (Anti-duplikasi listener)
+      initSmartCTAs();
     });
   </script>
 </body>
