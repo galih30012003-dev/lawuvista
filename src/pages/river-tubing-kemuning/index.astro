@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Navbar from '@/components/layout/Navbar.astro';
 import Footer from '@/components/layout/Footer.astro';
 import BundleCard from '@/components/cro/BundleCard.astro';
+import TrustMarquee from '@/components/cro/TrustMarquee.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import packagesData from '@/data/packages.json';
 
@@ -27,18 +28,6 @@ const faqTubing = [
     answer: 'Durasi pengarungan berkisar antara 30 hingga 60 menit tergantung rute yang dipilih (Short 800M, Medium 1KM, atau Long 1.3KM - 1.8KM).'
   }
 ];
-
-const clientLogos = [
-  { name: 'Telkom Indonesia', file: '/assets/images/logos/telkom-indonesia.webp' },
-  { name: 'Bank BRI', file: '/assets/images/logos/bank-bri.webp' },
-  { name: 'PKK', file: '/assets/images/logos/pkk.webp' },
-  { name: 'SMK Tamansiswa', file: '/assets/images/logos/smk-tamansiswa.webp' },
-  { name: 'SMPN 6 Pati', file: '/assets/images/logos/smpn-6-pati.webp' },
-  { name: 'PT Hongya', file: '/assets/images/logos/pt-hongya.webp' },
-  { name: 'Ardianajie Trans', file: '/assets/images/logos/ardianajie-trans.webp' },
-  { name: 'Summitri Tours', file: '/assets/images/logos/summitri-tours.webp' },
-  { name: 'Yayasan Dail Khairat', file: '/assets/images/logos/yayasan-dail-khairat.webp' }
-];
 ---
 
 <Layout
@@ -61,6 +50,9 @@ const clientLogos = [
         class="hero-bg-img"
         loading="eager"
         fetchpriority="high"
+        width="1920"
+        height="1080"
+        decoding="async"
       />
       <div class="hero-overlay"></div>
     </div>
@@ -117,24 +109,7 @@ const clientLogos = [
   </div>
 
   <!-- TRUST BAR ASLI -->
-  <section class="trusted-section" aria-label="Dipercaya oleh berbagai instansi">
-    <div class="container">
-      <div class="trusted-header">
-        <div class="trusted-label">DIPERCAYA OLEH</div>
-        <div class="trusted-subtitle">Dari perusahaan besar hingga sekolah, semua memilih Lawu Vista untuk momen yang tak terlupakan.</div>
-      </div>
-    </div>
-    <div class="trusted-marquee-wrapper" aria-hidden="true">
-      <div class="trusted-marquee-track">
-        {clientLogos.map(logo => (
-          <div class="trusted-marquee-item"><img src={logo.file} alt={logo.name} loading="lazy" /></div>
-        ))}
-        {clientLogos.map(logo => (
-          <div class="trusted-marquee-item"><img src={logo.file} alt={logo.name} loading="lazy" /></div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <TrustMarquee />
 
   <!-- UPSELL BUNDLING SUPER COMBO -->
   <section id="bundles" class="section packages-section" style="background:#fdf4ff;border-top:1px solid #f0abfc;border-bottom:1px solid #f0abfc;">
