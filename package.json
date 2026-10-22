@@ -7,7 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node tests/packages-schema.test.mjs && node tests/track-lead.test.mjs && node tests/components.test.mjs && node tests/landing-pages.test.mjs && node tests/routes.test.mjs && node tests/e2e-simulation.test.mjs"
+    "test": "node tests/packages-schema.test.mjs && node tests/track-lead.test.mjs && node tests/components.test.mjs && node tests/landing-pages.test.mjs && node tests/routes.test.mjs && node tests/e2e-simulation.test.mjs && node tests/packages-grid-alignment.test.mjs && node tests/other-services.test.mjs && node tests/copywriting-audit.test.mjs"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.5",

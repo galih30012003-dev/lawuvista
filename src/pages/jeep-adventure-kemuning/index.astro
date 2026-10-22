@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer.astro';
 import BundleCard from '@/components/cro/BundleCard.astro';
 import PaxCalculator from '@/components/cro/PaxCalculator.astro';
 import TrustMarquee from '@/components/cro/TrustMarquee.astro';
+import OtherServices from '@/components/cro/OtherServices.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import packagesData from '@/data/packages.json';
 
@@ -64,9 +65,9 @@ const faqJeep = [
       <div class="hero-overlay"></div>
     </div>
     <div class="container hero-content">
-      <div class="hero-badge">#1 Jeep Adventure Kemuning — 300+ Trip, Ribuan Peserta Puas</div>
-      <h1 id="hero-heading" class="hero-title">Jeep Adventure Kemuning</h1>
-      <p class="hero-subtitle">Jelajahi kebun teh Kemuning &amp; lereng Gunung Lawu naik Jeep 4x4 terbaik! <strong>Paket All-in Jujur:</strong> Driver Lokal Berlisensi, BBM, Tiket Masuk Wisata, Asuransi Resmi, &amp; Free Dokumentasi Foto/Video. Slot armada weekend terbatas — amankan sebelum H-3!</p>
+      <div class="hero-badge">Sewa Jeep Wisata Kemuning Karanganyar</div>
+      <h1 id="hero-heading" class="hero-title">Sewa Jeep Adventure Kemuning</h1>
+      <p class="hero-subtitle">Pilihan rute offroad melintasi kebun teh, air terjun, dan perbukitan lereng Gunung Lawu. Tarif per mobil sudah termasuk driver, bahan bakar (BBM), tiket masuk wisata, asuransi resmi, dan dokumentasi foto video.</p>
       <div class="hero-proof">
         <div class="hero-avatars" aria-hidden="true">
           <div class="avatar-circle"><img src="/assets/images/avatars/avatar-1.webp" alt="Peserta" width="32" height="32" /></div>
@@ -97,11 +98,11 @@ const faqJeep = [
           data-package-id="hero-jeep-cta"
           data-default-msg="Halo Lawu Vista, saya ingin booking Jeep Adventure Kemuning. Bisa info paket & harga?"
         >
-          <svg class="wa-icon-svg" width="22" height="22" aria-hidden="true"><use href="#icon-wa"/></svg> Chat WhatsApp Sekarang
-          <small>Respon cepat 08.00&ndash;20.00 WIB</small>
+          <svg class="wa-icon-svg" width="22" height="22" aria-hidden="true"><use href="#icon-wa"/></svg> Pesan Jeep via WhatsApp
+          <small>Konsultasi rute dan ketersediaan unit armada</small>
         </a>
         <a href="#bundles" class="btn btn-outline btn-lg">
-          Paket Hemat Bundling
+          Pilihan Paket Bundling
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
       </div>
@@ -111,7 +112,7 @@ const faqJeep = [
   <!-- SCARCITY BAR ASLI -->
   <div class="scarcity-bar" role="alert">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <span><strong>⚡ Slot Weekend Terbatas:</strong> Amankan armada Jeep Anda sebelum H-3! Kuota driver berlisensi terbatas setiap harinya demi standar kenyamanan &amp; keselamatan maksimal.</span>
+    <span>Pemesanan untuk akhir pekan atau hari libur disarankan dilakukan lebih awal agar ketersediaan unit armada tetap terjamin.</span>
   </div>
 
   <!-- TRUST BAR ASLI -->
@@ -121,12 +122,12 @@ const faqJeep = [
   <section id="bundles" class="section packages-section" style="background:#fdf4ff;border-top:1px solid #f0abfc;border-bottom:1px solid #f0abfc;">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" style="background:var(--primary);color:#fff;padding:.3rem .9rem;border-radius:99px;">⭐ REKOMENDASI PALING HEMAT (BEST VALUE)</span>
+        <span class="section-label" style="background:var(--primary);color:#fff;padding:.3rem .9rem;border-radius:99px;">Paket Bundling</span>
         <h2 class="section-title">Paket Bundling Super Combo: Jeep + Tubing + Makan</h2>
-        <p class="section-subtitle">Pilihan all-in terfavorit keluarga &amp; rombongan — hemat biaya hingga Rp65.000/orang dibanding beli terpisah!</p>
+        <p class="section-subtitle">Gabungan paket Jeep Adventure, River Tubing, dan makan siang prasmanan untuk rombongan.</p>
       </div>
 
-      <div class="packages-grid" style="max-width:960px;margin:0 auto 2.5rem;">
+      <div class="packages-grid packages-grid-2" style="max-width:860px;margin:0 auto 2.5rem;">
         {superCombo && <BundleCard pkg={superCombo as any} featured={true} />}
         {familyFun && <BundleCard pkg={familyFun as any} />}
       </div>
@@ -140,13 +141,13 @@ const faqJeep = [
   <section id="packages" class="section packages-section" aria-labelledby="packages-heading">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">PILIH RUTE JEEP</span>
-        <h2 id="packages-heading" class="section-title">Katalog Lengkap Rute Jeep Adventure Kemuning</h2>
-        <p class="section-subtitle">Harga per mobil jeep (kapasitas 4–5 orang). Driver profesional, BBM &amp; dokumentasi foto video sudah all-in!</p>
+        <span class="section-label">Pilihan Rute</span>
+        <h2 id="packages-heading" class="section-title">Katalog Rute Jeep Adventure Kemuning</h2>
+        <p class="section-subtitle">Kapasitas tiap mobil untuk 4 sampai 5 penumpang. Driver, BBM, tiket masuk, dan dokumentasi foto video sudah termasuk.</p>
       </div>
 
       <!-- 1. GROUP SHORT -->
-      <div class="reveal" style="text-align:left;margin:2rem 0 1.25rem">
+      <div class="reveal jpkg-group-wrap" style="text-align:center;margin:2rem 0 1.25rem">
         <span class="jpkg-group-label">PAKET SHORT ROUTE</span>
       </div>
       <div class="jpkg-grid jpkg-grid-3 reveal">
@@ -187,10 +188,10 @@ const faqJeep = [
       </div>
 
       <!-- 2. GROUP SHORT PLUS -->
-      <div class="reveal" style="text-align:left;margin:3rem 0 1.25rem">
+      <div class="reveal jpkg-group-wrap" style="text-align:center;margin:3rem 0 1.25rem">
         <span class="jpkg-group-label">PAKET SHORT PLUS</span>
       </div>
-      <div class="jpkg-grid jpkg-grid-2 reveal">
+      <div class="jpkg-grid jpkg-grid-row-center reveal">
         {shortPlusPackages.map(pkg => (
           <div class={`jpkg-card ${pkg.isPopular ? 'jpkg-card-popular' : ''}`}>
             {pkg.badge && <div class="jpkg-badge">{pkg.badge}</div>}
@@ -229,10 +230,10 @@ const faqJeep = [
       </div>
 
       <!-- 3. GROUP MEDIUM -->
-      <div class="reveal" style="text-align:left;margin:3rem 0 1.25rem">
+      <div class="reveal jpkg-group-wrap" style="text-align:center;margin:3rem 0 1.25rem">
         <span class="jpkg-group-label">PAKET MEDIUM</span>
       </div>
-      <div class="jpkg-grid jpkg-grid-2 reveal">
+      <div class="jpkg-grid jpkg-grid-row-center reveal">
         {mediumPackages.map(pkg => (
           <div class="jpkg-card">
             <div class="jpkg-img">
@@ -270,10 +271,10 @@ const faqJeep = [
       </div>
 
       <!-- 4. GROUP LONG -->
-      <div class="reveal" style="text-align:left;margin:3rem 0 1.25rem">
+      <div class="reveal jpkg-group-wrap" style="text-align:center;margin:3rem 0 1.25rem">
         <span class="jpkg-group-label">PAKET LONG</span>
       </div>
-      <div class="jpkg-grid jpkg-grid-2 reveal">
+      <div class="jpkg-grid jpkg-grid-row-center reveal">
         {longPackages.map(pkg => (
           <div class={`jpkg-card ${pkg.isPopular ? 'jpkg-card-popular' : ''}`}>
             {pkg.badge && <div class="jpkg-badge">{pkg.badge}</div>}
@@ -317,38 +318,41 @@ const faqJeep = [
   <section class="section benefit-section" id="keunggulan">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">KENAPA JEEP LAWU VISTA SELALU HABIS DI WEEKEND?</span>
-        <h2 class="section-title">5 Alasan Peserta Setia Kami Tidak Pernah Pindah ke Lain Hati</h2>
+        <span class="section-label">Standar Layanan</span>
+        <h2 class="section-title">Keunggulan Layanan Jeep Lawu Vista</h2>
       </div>
       <div class="benefit-grid reveal">
         <div class="benefit-card">
           <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-          <h3 class="benefit-title">Driver Berlisensi &amp; Ramah</h3>
-          <p class="benefit-desc">Driver lokal tersertifikasi, berpengalaman 5+ tahun melintasi kebun teh, ramah anak &amp; keluarga, mengutamakan kenyamanan Anda.</p>
+          <h3 class="benefit-title">Driver Lokal Berpengalaman</h3>
+          <p class="benefit-desc">Driver lokal yang paham kontur jalan kebun teh, ramah anak dan keluarga, serta mengutamakan keselamatan penumpang.</p>
         </div>
         <div class="benefit-card">
           <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
-          <h3 class="benefit-title">All-in Termasuk Asuransi</h3>
-          <p class="benefit-desc">Harga transparan tanpa biaya siluman. Sudah termasuk BBM, tiket spot wisata, driver profesional, &amp; asuransi resmi!</p>
+          <h3 class="benefit-title">Tarif All-in Transparan</h3>
+          <p class="benefit-desc">Biaya sewa sudah mencakup unit jeep, bahan bakar (BBM), tiket masuk spot wisata, dan asuransi resmi.</p>
         </div>
         <div class="benefit-card">
           <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
-          <h3 class="benefit-title">Garansi Armada Prima</h3>
-          <p class="benefit-desc">Jeep 4x4 lolos inspeksi berkala, bersih, &amp; wangi. Jika ada kendala teknis, kami garansi penggantian armada langsung di tempat.</p>
+          <h3 class="benefit-title">Armada Dicek Rutin</h3>
+          <p class="benefit-desc">Kondisi mesin, rem 4x4, dan kebersihan kabin mobil diperiksa secara berkala sebelum mengantar penumpang.</p>
         </div>
         <div class="benefit-card">
           <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <h3 class="benefit-title">Aman untuk Semua Usia</h3>
-          <p class="benefit-desc">Standar keselamatan ketat, seatbelt aktif, briefing rute sebelum jalan. Sangat aman dinikmati anak-anak hingga lansia.</p>
+          <h3 class="benefit-title">Rute Aman untuk Keluarga</h3>
+          <p class="benefit-desc">Dilengkapi sabuk pengaman dan briefing sebelum berangkat. Tersedia opsi rute santai untuk anak-anak dan orang tua.</p>
         </div>
         <div class="benefit-card">
           <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div>
-          <h3 class="benefit-title">Respon Super Cepat</h3>
-          <p class="benefit-desc">Tanya kapan saja via WhatsApp — CS kami merespon dalam hitungan menit untuk mengamankan slot trip rombongan Anda.</p>
+          <h3 class="benefit-title">Kemudahan Komunikasi</h3>
+          <p class="benefit-desc">Konsultasi cepat lewat WhatsApp untuk mengecek ketersediaan jam keberangkatan dan rekomendasi paket rute.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- SECTION ANTAR-HALAMAN (CROSS-SELLING LAYANAN LAINNYA) -->
+  <OtherServices currentService="jeep" />
 
   <!-- FAQ SECTION ASLI -->
   <section class="section faq-section" id="faq">
@@ -378,15 +382,15 @@ const faqJeep = [
     <div class="container">
       <div class="cta-inner">
         <div class="cta-left">
-          <h2>Siap Menaklukkan Kemuning<br />Bersama Jeep Lawu Vista?</h2>
-          <p>Slot akhir pekan dan hari libur cepat penuh! Booking sekarang via WhatsApp untuk memastikan tanggal favorit Anda.</p>
+          <h2>Siap Menikmati Wisata Jeep di Kemuning?</h2>
+          <p>Tanyakan pilihan rute yang sesuai, ketersediaan unit armada pada tanggal rencana Anda, atau titik kumpul penjemputan rombongan.</p>
         </div>
         <div class="cta-right">
           <div class="cta-right-icon" aria-hidden="true">
             <svg class="wa-icon-svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.528 5.843L0 24l6.335-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.357-.214-3.762.895.954-3.667-.234-.375A9.776 9.776 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182S21.818 6.574 21.818 12 17.426 21.818 12 21.818z"/></svg>
           </div>
-          <h3>Booking Sekarang via WhatsApp</h3>
-          <p class="cta-hours">Respon cepat 08.00&ndash;20.00 WIB</p>
+          <h3>Pesan via WhatsApp</h3>
+          <p class="cta-hours">Jam operasional 08.00&ndash;20.00 WIB</p>
           <a
             href="https://wa.me/6281228237512?text=Halo%20Lawu%20Vista%2C%20saya%20ingin%20booking%20Jeep%20Adventure%20Kemuning.%20Bisa%20info%20paket%20%26%20harga%3F"
             class="btn btn-wa btn-lg btn-block lv-wa-cta"
@@ -395,7 +399,7 @@ const faqJeep = [
             data-package-id="cta-bottom-jeep"
             data-default-msg="Halo Lawu Vista, saya ingin booking Jeep Adventure Kemuning. Bisa info paket & harga?"
           >
-            Chat WhatsApp Sekarang
+            Hubungi via WhatsApp
           </a>
         </div>
       </div>

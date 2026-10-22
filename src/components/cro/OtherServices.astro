@@ -1,0 +1,120 @@
+---
+interface Props {
+  currentService: 'jeep' | 'outbound' | 'tubing' | 'villa';
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  currentService,
+  title = 'Pilihan Aktivitas Wisata Lainnya di Kemuning',
+  subtitle = 'Kegiatan wisata ini dapat dipesan terpisah atau digabungkan dalam satu jadwal kunjungan rombongan Anda.'
+} = Astro.props;
+
+const allServices = [
+  {
+    id: 'jeep',
+    name: 'Jeep Adventure Kemuning',
+    href: '/jeep-adventure-kemuning/',
+    image: '/assets/images/service-jeep.webp',
+    desc: 'Jelajah kebun teh, air terjun, dan bukit paralayang. Kapasitas 4 hingga 5 orang per mobil dengan driver lokal berpengalaman.',
+    price: 'Rp300.000',
+    unit: '/jeep',
+    badge: 'Wisata Offroad'
+  },
+  {
+    id: 'outbound',
+    name: 'Outbound & Gathering',
+    href: '/outbound-kemuning/',
+    image: '/assets/images/service-outbound.webp',
+    desc: 'Kegiatan team building untuk kantor, sekolah, dan komunitas. Dilengkapi master trainer bersertifikat dan area transit luas.',
+    price: 'Rp90.000',
+    unit: '/orang',
+    badge: 'Team Building'
+  },
+  {
+    id: 'tubing',
+    name: 'River Tubing Kemuning',
+    href: '/river-tubing-kemuning/',
+    image: '/assets/images/service-tubing.webp',
+    desc: 'Susur sungai alami berarus jernih dan segar. Dilengkapi rompi pelampung standar, helm pelindung, dan tim pemandu.',
+    price: 'Rp40.000',
+    unit: '/orang',
+    badge: 'Susur Sungai'
+  },
+  {
+    id: 'villa',
+    name: 'Villa Kemuning',
+    href: '/villa-kemuning/',
+    image: '/assets/images/service-villa.webp',
+    desc: 'Penginapan keluarga dan rombongan di tengah kebun teh dengan pemandangan Gunung Lawu. Fasilitas dapur dan BBQ lengkap.',
+    price: 'Rp1.200.000',
+    unit: '/malam',
+    badge: 'Penginapan Villa'
+  }
+];
+
+const otherServices = allServices.filter(s => s.id !== currentService);
+---
+
+<section class="section other-services-section" style="background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label" style="background:var(--primary);color:#fff;padding:.3rem .9rem;border-radius:99px;">
+        Layanan Lainnya
+      </span>
+      <h2 class="section-title">{title}</h2>
+      <p class="section-subtitle">{subtitle}</p>
+    </div>
+
+    <div class="packages-grid packages-grid-3" style="max-width:1100px;margin:0 auto;">
+      {otherServices.map((svc) => (
+        <article class="relative flex flex-col bg-white rounded-3xl border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1.5">
+          <!-- Image Cover -->
+          <div class="h-48 w-full overflow-hidden relative bg-gray-100 shrink-0">
+            <img
+              src={svc.image}
+              alt={svc.name}
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="360"
+            />
+            <span class="absolute top-3 right-3 bg-gray-900/80 backdrop-blur-sm text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+              {svc.badge}
+            </span>
+          </div>
+
+          <!-- Body Content -->
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-extrabold text-gray-900 leading-snug mb-2">
+                {svc.name}
+              </h3>
+              <p class="text-xs text-gray-600 line-clamp-3 leading-relaxed mb-4">
+                {svc.desc}
+              </p>
+              <div class="inline-flex items-baseline gap-1 bg-primary/10 px-3 py-1.5 rounded-xl border border-primary/20 mb-5">
+                <span class="text-xs text-gray-600 font-medium">Mulai</span>
+                <span class="text-base font-black text-primary">{svc.price}</span>
+                <span class="text-xs text-gray-500">{svc.unit}</span>
+              </div>
+            </div>
+
+            <!-- Action Link -->
+            <a
+              href={svc.href}
+              class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl font-bold text-xs bg-gray-900 text-white hover:bg-primary transition-colors shadow-sm"
+            >
+              <span>Lihat Detail Layanan</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -4,6 +4,7 @@ import Navbar from '@/components/layout/Navbar.astro';
 import Footer from '@/components/layout/Footer.astro';
 import BundleCard from '@/components/cro/BundleCard.astro';
 import TrustMarquee from '@/components/cro/TrustMarquee.astro';
+import OtherServices from '@/components/cro/OtherServices.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import packagesData from '@/data/packages.json';
 
@@ -58,9 +59,9 @@ const faqB2B = [
       <div class="hero-overlay"></div>
     </div>
     <div class="container hero-content">
-      <div class="hero-badge">Vendor Outbound &amp; Gathering #1 Kemuning — Dipercaya Telkom, BRI, SMK &amp; 200+ Instansi</div>
-      <h1 id="hero-heading" class="hero-title">Outbound &amp; Team Building Kemuning</h1>
-      <p class="hero-subtitle">Solusi gathering &amp; team building all-in untuk perusahaan, BUMN, sekolah, &amp; instansi pemerintah! Didampingi Master Trainer bersertifikat, area resto transit luas &amp; privat, free dokumentasi foto/video/drone, serta legalitas lengkap (Invoice &amp; Kuitansi resmi). Draft proposal &amp; RAB siap dalam 15 menit via WhatsApp!</p>
+      <div class="hero-badge">Penyelenggara Outbound &amp; Gathering Kemuning</div>
+      <h1 id="hero-heading" class="hero-title">Paket Outbound &amp; Gathering Kemuning</h1>
+      <p class="hero-subtitle">Paket team building dan gathering untuk kantor, instansi, sekolah, dan komunitas di Kemuning. Didampingi master trainer bersertifikat, area transit luas, konsumsi prasmanan, dan kelengkapan berkas administrasi seperti invoice serta kuitansi resmi untuk kebutuhan LPJ.</p>
 
       <div class="hero-proof">
         <div class="hero-avatars" aria-hidden="true">
@@ -93,8 +94,8 @@ const faqB2B = [
           data-package-id="hero-outbound-cta"
           data-default-msg="Halo Lawu Vista, saya ingin info Outbound Kemuning untuk rombongan kami. Bisa bantu?"
         >
-          <svg class="wa-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.528 5.843L0 24l6.335-1.508A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.357-.214-3.762.895.954-3.667-.234-.375A9.776 9.776 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182S21.818 6.574 21.818 12 21.818z"/></svg> Chat WhatsApp Sekarang
-          <small>Respon cepat 08.00&ndash;20.00 WIB</small>
+          <svg class="wa-icon-svg" width="22" height="22" aria-hidden="true"><use href="#icon-wa"/></svg> Minta Draft Proposal &amp; RAB
+          <small>Kelengkapan berkas administrasi dan invoice resmi</small>
         </a>
         <a href="#corporate-bundles" class="btn btn-outline btn-lg">
           Paket All-in Corporate
@@ -107,7 +108,7 @@ const faqB2B = [
   <!-- SCARCITY BAR ASLI -->
   <div class="scarcity-bar" role="alert">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <span><strong>⚡ Jadwal Gathering Akhir Pekan Cepat Penuh:</strong> Booking slot instansi Anda minimal H-7 untuk memastikan ketersediaan venue transit privat, jadwal Master Trainer, &amp; konsumsi prasmanan.</span>
+    <span>Konfirmasi tanggal untuk kegiatan gathering instansi disarankan minimal H-7 agar alokasi area lapangan dan jadwal trainer dapat dipersiapkan secara optimal.</span>
   </div>
 
   <!-- TRUST BAR ASLI -->
@@ -118,12 +119,12 @@ const faqB2B = [
   <section id="corporate-bundles" class="section packages-section" style="background:#fdf4ff;border-top:1px solid #f0abfc;border-bottom:1px solid #f0abfc;">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" style="background:var(--forest);color:#fff;padding:.3rem .9rem;border-radius:99px;">🏢 SOLUSI RETREAT & GATHERING ALL-IN</span>
-        <h2 class="section-title">Paket Gathering Paling Praktis untuk Perusahaan</h2>
-        <p class="section-subtitle">Semua sudah disiapkan dari venue, rundown, fasilitator, penginapan villa, hingga konsumsi prasmanan lengkap.</p>
+        <span class="section-label" style="background:var(--forest);color:#fff;padding:.3rem .9rem;border-radius:99px;">Paket Menginap &amp; Gathering</span>
+        <h2 class="section-title">Paket Gathering dan Villa untuk Instansi</h2>
+        <p class="section-subtitle">Rangkaian acara yang memadukan penginapan villa, outbound team building, dan makan prasmanan.</p>
       </div>
 
-      <div class="packages-grid" style="max-width:960px;margin:0 auto;">
+      <div class="packages-grid packages-grid-2" style="max-width:860px;margin:0 auto 2.5rem;">
         {corporateRetreat && <BundleCard pkg={corporateRetreat as any} featured={true} />}
         {superCombo && <BundleCard pkg={superCombo as any} />}
       </div>
@@ -134,12 +135,12 @@ const faqB2B = [
   <section id="packages" class="section packages-section" aria-labelledby="packages-heading">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">PILIH PAKET OUTBOUND</span>
-        <h2 id="packages-heading" class="section-title">Katalog Lengkap Paket Outbound 1 s/d 8</h2>
-        <p class="section-subtitle">Minimal peserta 16–20 orang. Sudah termasuk master trainer, fasilitator, tool games, makan prasmanan &amp; resto transit!</p>
+        <span class="section-label">Pilihan Paket</span>
+        <h2 id="packages-heading" class="section-title">Pilihan Paket Outbound Kemuning</h2>
+        <p class="section-subtitle">Tersedia untuk minimal 16 sampai 20 peserta, sudah termasuk fasilitator, perlengkapan simulasi games, dan area istirahat.</p>
       </div>
 
-      <div class="jpkg-grid jpkg-grid-2 reveal">
+      <div class="jpkg-grid jpkg-grid-3 reveal">
         {outboundPackages.map(pkg => (
           <div class={`jpkg-card ${pkg.isPopular ? 'jpkg-card-popular' : ''}`}>
             {pkg.badge && <div class="jpkg-badge">{pkg.badge}</div>}
@@ -222,6 +223,9 @@ const faqB2B = [
     </div>
   </section>
 
+  <!-- SECTION ANTAR-HALAMAN (CROSS-SELLING LAYANAN LAINNYA) -->
+  <OtherServices currentService="outbound" />
+
   <!-- FAQ B2B ASLI -->
   <section class="section faq-section" id="faq">
     <div class="container">
@@ -250,8 +254,8 @@ const faqB2B = [
     <div class="container">
       <div class="cta-inner">
         <div class="cta-left">
-          <h2>Rencanakan Event Kantor Anda<br />Bersama Lawu Vista Sekarang!</h2>
-          <p>Dapatkan proposal penawaran resmi, contoh susunan acara (rundown), dan konsultasi penyesuaian anggaran secara gratis.</p>
+          <h2>Rencanakan Event Kantor Anda<br />Bersama Master Trainer Lawu Vista</h2>
+          <p>Dapatkan proposal penawaran resmi, contoh susunan acara (rundown), dan konsultasi penyesuaian anggaran secara gratis. Dilengkapi invoice resmi &amp; kuitansi bermaterai untuk kemudahan LPJ perusahaan Anda.</p>
         </div>
         <div class="cta-right">
           <div class="cta-right-icon" aria-hidden="true">

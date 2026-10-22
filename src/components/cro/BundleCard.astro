@@ -44,7 +44,7 @@ const savings = pkg.originalPrice ? new Intl.NumberFormat('id-ID').format(pkg.or
   <div class="p-5 sm:p-7 flex-1 flex flex-col justify-between">
     <div>
       <span class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-primary mb-1 block">
-        {pkg.category === 'bundle' ? 'Paket Bundling Super Hemat' : 'Pilihan Favorit'}
+        {pkg.category === 'bundle' ? 'Paket Bundling' : 'Pilihan Paket'}
       </span>
       <h3 class="text-lg sm:text-xl font-extrabold text-gray-900 leading-snug">{pkg.name}</h3>
       <p class="text-xs text-gray-500 mt-1 line-clamp-2">{pkg.tagline}</p>
@@ -78,8 +78,8 @@ const savings = pkg.originalPrice ? new Intl.NumberFormat('id-ID').format(pkg.or
 
     <!-- CTA Button -->
     <WhatsAppCTA
-      text="Ambil Penawaran Ini"
-      subtext="Kunci Slot Sebelum Penuh"
+      text="Pesan Paket via WA"
+      subtext="Tanya ketersediaan jadwal"
       packageId={pkg.id}
       defaultMessage={pkg.waTemplate}
       variant={featured ? 'primary' : 'secondary'}
